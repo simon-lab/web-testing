@@ -55,7 +55,6 @@ public class dspPortalTest implements ITestListener {
         dataMerchantPage dataMerchantPage = new dataMerchantPage(driver);
         dataMerchantPage.isAt();
         dataMerchantPage.pilihSumberFDM("reguler");
-
         dataMerchantPage.pilihKategoriMerchant("badan usaha");
         dataMerchantPage.isiNamaMerchant("Test Merchant");
         dataMerchantPage.isiNamaPerusahaan("PT Test DSP");
@@ -70,6 +69,7 @@ public class dspPortalTest implements ITestListener {
         dataMerchantPage.selanjutnya();
 
         informasiLayananPage informasiLayananPage = new informasiLayananPage(driver);
+        informasiLayananPage.isAt();
         informasiLayananPage.isiPICUsaha("SaimenTest");
         informasiLayananPage.isiNoTelp("08123123123");
         informasiLayananPage.isiEmail("rajasimon0@gmail.com");
