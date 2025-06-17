@@ -19,7 +19,7 @@ public class informasiSettlementPage extends AbstractPage {
     @FindBy(xpath = "//input[@id='finance_email']")
     private WebElement emailField;
 
-    @FindBy(xpath = "(//input[@class='select2-search__field'])[1]")
+    @FindBy(xpath = "(//input[@class='select2-search__field'])[5]")
     private WebElement supportCardField;
     @FindBy(xpath = "//li[text()='Credit Card']")
     private WebElement creditCard;
@@ -95,6 +95,10 @@ public class informasiSettlementPage extends AbstractPage {
     public void pilihBank() {
         pilihBankDropdown.click();
         kaltengBank.click();
+    }
+
+    public void isiNoRekening(String noRekening) {
+        noRekeningField.sendKeys(noRekening);
     }
 
     public void inqClick() {

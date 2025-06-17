@@ -12,6 +12,7 @@ import com.saimen.TestListener;
 import com.saimen.dspPortal.dataMerchantPage;
 import com.saimen.dspPortal.fdmPage;
 import com.saimen.dspPortal.informasiLayananPage;
+import com.saimen.dspPortal.informasiSettlementPage;
 import com.saimen.dspPortal.loginPage;
 import com.saimen.dspPortal.oprHomePage;
 
@@ -52,41 +53,54 @@ public class dspPortalTest implements ITestListener {
         fdmPage.setStatus("Approved");
         fdmPage.buatMOS();
 
-        dataMerchantPage dataMerchantPage = new dataMerchantPage(driver);
-        dataMerchantPage.isAt();
-        dataMerchantPage.pilihSumberFDM("reguler");
-        dataMerchantPage.pilihKategoriMerchant("badan usaha");
-        dataMerchantPage.isiNamaMerchant("Test Merchant");
-        dataMerchantPage.isiNamaPerusahaan("PT Test DSP");
-        dataMerchantPage.isiAlamat("Alam Sutera");
-        dataMerchantPage.isiProvinsiKota();
-        dataMerchantPage.isiKodePos("40123");
-        dataMerchantPage.isiCityPten("1234");
-        dataMerchantPage.pilihCountry();
-        dataMerchantPage.pilihMCC();
-        dataMerchantPage.isiOnset("5000000");
-        dataMerchantPage.pilihKategoriUsaha("ume");
-        dataMerchantPage.selanjutnya();
+        dataMerchantPage dataMerchant = new dataMerchantPage(driver);
+        dataMerchant.isAt();
+        dataMerchant.pilihSumberFDM("reguler");
+        dataMerchant.pilihKategoriMerchant("badan usaha");
+        dataMerchant.isiNamaMerchant("Test Merchant");
+        dataMerchant.isiNamaPerusahaan("PT Test DSP");
+        dataMerchant.isiAlamat("Alam Sutera");
+        dataMerchant.isiProvinsiKota();
+        dataMerchant.isiKodePos("40123");
+        dataMerchant.isiCityPten("1234");
+        dataMerchant.pilihCountry();
+        dataMerchant.pilihMCC();
+        dataMerchant.isiOnset("5000000");
+        dataMerchant.pilihKategoriUsaha("ume");
+        dataMerchant.selanjutnya();
 
-        informasiLayananPage informasiLayananPage = new informasiLayananPage(driver);
-        informasiLayananPage.isAt();
-        informasiLayananPage.isiPICUsaha("SaimenTest");
-        informasiLayananPage.isiNoTelp("08123123123");
-        informasiLayananPage.isiEmail("rajasimon0@gmail.com");
-        informasiLayananPage.pilihJenisUsaha("single");
-        informasiLayananPage.pilihJenisLayanan("vkiosk", "self order kiosk", "edc qr");
-        informasiLayananPage.pilihTipeKiosk("regular");
-        informasiLayananPage.pilihTipeOrder("dine in", "take away");
-        informasiLayananPage.isiPPN("11");
-        informasiLayananPage.isiServiceCharge("5");
-        informasiLayananPage.isiBiayaAdmin("5000");
-        informasiLayananPage.pilihMetodePembayaran("qris", "debit");
-        informasiLayananPage.activeOnline();
-        informasiLayananPage.isiActiveOffline("OnGood");
-        informasiLayananPage.activeOffline();
-        informasiLayananPage.isiActiveOffline("OffGood");
-        informasiLayananPage.isiJumlahEDC("2");
-        informasiLayananPage.pilihJenisKartu("visa", "master");
+        informasiLayananPage layanan = new informasiLayananPage(driver);
+        layanan.isAt();
+        layanan.isiPICUsaha("SaimenTest");
+        layanan.isiNoTelp("08123123123");
+        layanan.isiEmail("rajasimon0@gmail.com");
+        layanan.pilihJenisUsaha("single");
+        layanan.pilihJenisLayanan("vkiosk", "self order kiosk", "edc qr");
+        layanan.pilihTipeKiosk("regular");
+        layanan.pilihTipeOrder("dine in", "take away");
+        layanan.isiPPN("11");
+        layanan.isiServiceCharge("5");
+        layanan.isiBiayaAdmin("5000");
+        layanan.pilihMetodePembayaran("qris", "debit");
+        layanan.activeOnline();
+        layanan.isiActiveOffline("OnGood");
+        layanan.activeOffline();
+        layanan.isiActiveOffline("OffGood");
+        layanan.isiJumlahEDC("2");
+        layanan.pilihJenisKartu("visa", "master");
+        layanan.selanjutnya();
+
+        informasiSettlementPage settlement = new informasiSettlementPage(driver);
+        settlement.isAt();
+        settlement.isiPICFinance("Test Saimen");
+        settlement.isiEmail("rajasimon0@gmail.com");
+        settlement.isiNoTelp("08123123123");
+        settlement.supportCard("credit card", "debit card");
+        settlement.pilihBank();
+        settlement.isiNoRekening("1234123412");
+        settlement.assertNamaPemilik("");
+        settlement.selanjutnya();
+
     }
 
     @AfterClass
