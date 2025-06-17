@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import com.saimen.TestListener;
 import com.saimen.dspPortal.dataMerchantPage;
 import com.saimen.dspPortal.fdmPage;
+import com.saimen.dspPortal.informasiLayananPage;
 import com.saimen.dspPortal.loginPage;
 import com.saimen.dspPortal.oprHomePage;
 
@@ -66,6 +67,26 @@ public class dspPortalTest implements ITestListener {
         dataMerchantPage.pilihMCC();
         dataMerchantPage.isiOnset("5000000");
         dataMerchantPage.pilihKategoriUsaha("ume");
+        dataMerchantPage.selanjutnya();
+
+        informasiLayananPage informasiLayananPage = new informasiLayananPage(driver);
+        informasiLayananPage.isiPICUsaha("SaimenTest");
+        informasiLayananPage.isiNoTelp("08123123123");
+        informasiLayananPage.isiEmail("rajasimon0@gmail.com");
+        informasiLayananPage.pilihJenisUsaha("single");
+        informasiLayananPage.pilihJenisLayanan("vkiosk", "self order kiosk", "edc qr");
+        informasiLayananPage.pilihTipeKiosk("regular");
+        informasiLayananPage.pilihTipeOrder("dine in", "take away");
+        informasiLayananPage.isiPPN("11");
+        informasiLayananPage.isiServiceCharge("5");
+        informasiLayananPage.isiBiayaAdmin("5000");
+        informasiLayananPage.pilihMetodePembayaran("qris", "debit");
+        informasiLayananPage.activeOnline();
+        informasiLayananPage.isiActiveOffline("OnGood");
+        informasiLayananPage.activeOffline();
+        informasiLayananPage.isiActiveOffline("OffGood");
+        informasiLayananPage.isiJumlahEDC("2");
+        informasiLayananPage.pilihJenisKartu("visa", "master");
     }
 
     @AfterClass

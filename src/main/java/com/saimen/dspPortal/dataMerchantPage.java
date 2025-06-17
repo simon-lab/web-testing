@@ -45,7 +45,7 @@ public class dataMerchantPage extends AbstractPage {
     private WebElement provinsiKorespondensiDropdown;
     @FindBy(xpath = "//li[text()='JAWA BARAT']")
     private WebElement jawaBarat;
-    @FindBy(xpath = "//*[@id='select2-city_korespondensi-container']")
+    @FindBy(xpath = "//span[text()='- Pilih Kabupaten/Kota Korespondensi -']")
     private WebElement kotaKorespondensiDropdown;
     @FindBy(xpath = "//li[text()='KOTA BANDUNG']")
     private WebElement bandung;
@@ -155,10 +155,13 @@ public class dataMerchantPage extends AbstractPage {
     public void isiProvinsiKota() {
         provinsiKorespondensiDropdown.click();
         jawaBarat.click();
+        this.wait.until(ExpectedConditions.visibilityOf(this.kotaKorespondensiDropdown));
         kotaKorespondensiDropdown.click();
         bandung.click();
+        this.wait.until(ExpectedConditions.visibilityOf(this.kecamatanKorespondensiDropdown));
         kecamatanKorespondensiDropdown.click();
         antapani.click();
+        this.wait.until(ExpectedConditions.visibilityOf(this.kelurahanKorespondensiDropdown));
         kelurahanKorespondensiDropdown.click();
         antapaniTengah.click();
     }

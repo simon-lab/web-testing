@@ -21,25 +21,49 @@ public class informasiLayananPage extends AbstractPage {
 
     @FindBy(css = "[title='Pilih Jenis Usaha FDM']")
     private WebElement jenisUsahaDropdown;
-    @FindBy(xpath = "//li[@id='select2-ju_fdm-result-9x6n-SINGLE']")
+    @FindBy(xpath = "//li[text()='SINGLE']")
     private WebElement singleBtn;
-    @FindBy(xpath = "//li[@id='select2-ju_fdm-result-l6t1-MULTI']")
+    @FindBy(xpath = "//li[text()='MULTI']")
     private WebElement multiBtn;
     @FindBy(xpath = "//li[text()='Pilih Jenis Usaha FDM']")
     private WebElement kosongUsahaBtn;
 
-    @FindBy(xpath = "//span[@class='select2 select2-container select2-container--default select2-container--below select2-container--focus']//input[@class='select2-search__field']")
+    @FindBy(xpath = "(//ul[@class='select2-selection__rendered'])[1]")
     private WebElement jenisLayananField;
-    @FindBy(id = "//li[@id='select2-jl_fdm-result-ijl1-Self Order Kiosk']")
+    @FindBy(xpath = "//li[text()='Self Order Kiosk']")
     private WebElement selfOrderLayanan;
-    @FindBy(id = "//li[@id='select2-jl_fdm-result-hyza-VKiosk']")
+    @FindBy(xpath = "//li[text()='VKiosk']")
     private WebElement vKioskLayanan;
-    @FindBy(id = "//li[@id='select2-jl_fdm-result-9mxw-EDC QR']")
+    @FindBy(xpath = "//li[text()='EDC QR']")
     private WebElement edcQrLayanan;
-    @FindBy(id = "//li[@id='select2-jl_fdm-result-94xu-QRIS E-Commerce']")
+    @FindBy(xpath = "//li[text()='QRIS E-Commerce']")
     private WebElement eCommerceLayanan;
-    @FindBy(id = "//li[@id='select2-jl_fdm-result-cpvy-QRIS Statis']")
+    @FindBy(xpath = "//li[text()='QRIS Statis']")
     private WebElement qrStatisLayanan;
+
+    @FindBy(css = "[title='Pilih Tipe Kiosk']")
+    private WebElement tipeKioskDropdown;
+    @FindBy(xpath = "//li[text()='Regular']")
+    private WebElement regularBtn;
+    @FindBy(xpath = "//li[text()='Ticketing']")
+    private WebElement ticketingBtn;
+    @FindBy(xpath = "//li[text()='Reservation']")
+    private WebElement reservationBtn;
+    @FindBy(xpath = "//li[text()='Delivery']")
+    private WebElement deliveryBtn;
+    @FindBy(xpath = "//li[text()='Pilih Tipe Kiosk']")
+    private WebElement tipeKioskKosongBtn;
+
+    @FindBy(xpath = "(//ul[@class='select2-selection__rendered'])[2]")
+    private WebElement tipeOrderDropdown;
+    @FindBy(xpath = "//li[text()='Dine In']")
+    private WebElement dineInBtn;
+    @FindBy(xpath = "//li[text()='Take Away']")
+    private WebElement takeAwayBtn;
+    @FindBy(xpath = "//li[text()='Delivery']")
+    private WebElement deliveryOrderBtn;
+    @FindBy(xpath = "//li[text()='Pick Up']")
+    private WebElement pickUpBtn;
 
     @FindBy(xpath = "//input[@id='PPN']")
     private WebElement ppnField;
@@ -48,13 +72,13 @@ public class informasiLayananPage extends AbstractPage {
     @FindBy(xpath = "//input[@id='Biaya_Admin']")
     private WebElement adminFeeField;
 
-    @FindBy(xpath = "//span[@class='select2 select2-container select2-container--default select2-container--below select2-container--focus']//li[@class='select2-search select2-search--inline']")
+    @FindBy(xpath = "(//ul[@class='select2-selection__rendered'])[3]")
     private WebElement metodePembayaranField;
-    @FindBy(id = "//li[@id='select2-jp_kiosk-result-lq3r-QRIS']")
+    @FindBy(xpath = "//li[text()='QRIS']")
     private WebElement qrisMetode;
-    @FindBy(id = "//li[@id='select2-jp_kiosk-result-x3t8-Debit']")
+    @FindBy(xpath = "//li[text()='Debit']")
     private WebElement debitMetode;
-    @FindBy(id = "//li[@id='select2-jp_kiosk-result-egdo-E-Money']")
+    @FindBy(xpath = "//li[text()='E-Money']")
     private WebElement eMoneyMetode;
 
     @FindBy(xpath = "//input[@id='daring_checkbox']")
@@ -70,15 +94,15 @@ public class informasiLayananPage extends AbstractPage {
     @FindBy(xpath = "//input[@id='Jumlah_Mesin_EDC']")
     private WebElement jumlahEdcField;
 
-    @FindBy(xpath = "//span[@class='select2 select2-container select2-container--default select2-container--below select2-container--focus']//input[@class='select2-search__field']")
+    @FindBy(xpath = "(//ul[@class='select2-selection__rendered'])[4]")
     private WebElement jenisKartuField;
-    @FindBy(id = "//li[@id='select2-Jenis_Kartu-result-6gnc-Visa']")
+    @FindBy(xpath = "//li[text()='Visa']")
     private WebElement kartuVisa;
-    @FindBy(id = "//li[@id='select2-Jenis_Kartu-result-rd4q-Master']")
+    @FindBy(xpath = "//li[text()='Master']")
     private WebElement kartuMaster;
-    @FindBy(id = "//li[@id='select2-Jenis_Kartu-result-pmq2-JCB']")
+    @FindBy(xpath = "//li[text()='JCB']")
     private WebElement kartuJCB;
-    @FindBy(id = "//li[@id='select2-Jenis_Kartu-result-8vry-UPI']")
+    @FindBy(xpath = "//li[text()='UPI']")
     private WebElement kartuUPI;
 
     @FindBy(xpath = "//div[@class='content active dstepper-block']//button[@class='btn btn-primary btn-prev']")
@@ -114,6 +138,7 @@ public class informasiLayananPage extends AbstractPage {
 
     public void pilihJenisUsaha(String jenisUsaha) {
         jenisUsahaDropdown.click();
+        this.wait.until(ExpectedConditions.visibilityOf(this.singleBtn));
 
         if (jenisUsaha == "single") {
             singleBtn.click();
@@ -132,9 +157,9 @@ public class informasiLayananPage extends AbstractPage {
             throw new IllegalArgumentException("Maksimal hanya boleh 5 parameter");
         }
 
-        jenisLayananField.click();
-
         for (String arg : jenisLayanan) {
+            jenisLayananField.click();
+            this.wait.until(ExpectedConditions.visibilityOf(this.vKioskLayanan));
             if ("self order kiosk".equals(arg)) {
                 selfOrderLayanan.click();
             } else if ("vkiosk".equals(arg)) {
@@ -152,6 +177,51 @@ public class informasiLayananPage extends AbstractPage {
 
     }
 
+    public void pilihTipeKiosk(String tipeKiosk) {
+
+        tipeKioskDropdown.click();
+
+        this.wait.until(ExpectedConditions.visibilityOf(this.regularBtn));
+
+        if (tipeKiosk == "regular") {
+            regularBtn.click();
+        } else if (tipeKiosk == "ticketing") {
+            ticketingBtn.click();
+        } else if (tipeKiosk == "reservation") {
+            reservationBtn.click();
+        } else if (tipeKiosk == "delivery") {
+            deliveryBtn.click();
+        } else if (tipeKiosk == "kosong") {
+            deliveryBtn.click();
+        } else {
+            Assert.fail("Tipe Kiosk Tidak Ada");
+        }
+
+    }
+
+    public void pilihTipeOrder(String... tipeOrder) {
+        if (tipeOrder.length > 4) {
+            throw new IllegalArgumentException("Maksimal hanya boleh 4 parameter");
+        }
+
+        for (String arg : tipeOrder) {
+            tipeOrderDropdown.click();
+            this.wait.until(ExpectedConditions.visibilityOf(this.dineInBtn));
+            if ("dine in".equals(arg)) {
+                dineInBtn.click();
+            } else if ("take away".equals(arg)) {
+                takeAwayBtn.click();
+            } else if ("delivery".equals(arg)) {
+                deliveryOrderBtn.click();
+            } else if ("pick up".equals(arg)) {
+                pickUpBtn.click();
+            } else {
+                Assert.fail("Tipe Order " + arg + " Tidak Ada");
+            }
+        }
+
+    }
+
     public void isiPPN(String ppn) {
         ppnField.sendKeys(ppn);
     }
@@ -164,14 +234,14 @@ public class informasiLayananPage extends AbstractPage {
         adminFeeField.sendKeys(biayaAdmin);
     }
 
-    public void pilihMotedePembayaran(String... metodePelayanan) {
+    public void pilihMetodePembayaran(String... metodePelayanan) {
         if (metodePelayanan.length > 3) {
             throw new IllegalArgumentException("Maksimal hanya boleh 3 parameter");
         }
 
-        metodePembayaranField.click();
-
         for (String arg : metodePelayanan) {
+            metodePembayaranField.click();
+            this.wait.until(ExpectedConditions.visibilityOf(this.qrisMetode));
             if ("qris".equals(arg)) {
                 qrisMetode.click();
             } else if ("debit".equals(arg)) {
@@ -210,9 +280,9 @@ public class informasiLayananPage extends AbstractPage {
             throw new IllegalArgumentException("Maksimal hanya boleh 4 parameter");
         }
 
-        jenisKartuField.click();
-
         for (String arg : jenisKartu) {
+            jenisKartuField.click();
+            this.wait.until(ExpectedConditions.visibilityOf(this.kartuMaster));
             if ("visa".equals(arg)) {
                 kartuVisa.click();
             } else if ("master".equals(arg)) {

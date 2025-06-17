@@ -1,6 +1,7 @@
-com\saimen\dspPortal\oprHomePage.class
-com\saimen\AbstractPage.class
 com\saimen\dspPortal\dataMerchantPage.class
-com\saimen\dspPortal\loginPage.class
 com\saimen\TestListener.class
 com\saimen\dspPortal\fdmPage.class
+com\saimen\dspPortal\oprHomePage.class
+com\saimen\AbstractPage.class
+com\saimen\dspPortal\loginPage.class
+com\saimen\dspPortal\informasiLayananPage.class
