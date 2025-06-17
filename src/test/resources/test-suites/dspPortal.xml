@@ -1,0 +1,8 @@
+<suite name="Web Testing">
+    <test name="DSP Portal Test">
+        <classes>
+            <class name="tests.dspPortal.dspPortalTest">
+            </class>
+        </classes>
+    </test>
+</suite>
