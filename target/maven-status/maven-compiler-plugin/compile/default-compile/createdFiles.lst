@@ -5,4 +5,5 @@ com\saimen\dspPortal\fdmPage.class
 com\saimen\dspPortal\oprHomePage.class
 com\saimen\AbstractPage.class
 com\saimen\dspPortal\loginPage.class
+com\saimen\dspPortal\informasiUsahaPage.class
 com\saimen\dspPortal\informasiLayananPage.class

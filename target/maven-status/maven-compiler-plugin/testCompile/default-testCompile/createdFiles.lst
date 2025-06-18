@@ -1,1 +1,4 @@
+tests\dspPortal\model\FDMTestData.class
+util\ResourceLoader.class
+util\JsonUtil.class
 tests\dspPortal\dspPortalTest.class

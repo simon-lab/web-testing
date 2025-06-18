@@ -1,11 +1,17 @@
 package tests.dspPortal;
 
+import java.io.File;
+import java.lang.reflect.Method;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.ITestListener;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.saimen.TestListener;
@@ -13,21 +19,39 @@ import com.saimen.dspPortal.dataMerchantPage;
 import com.saimen.dspPortal.fdmPage;
 import com.saimen.dspPortal.informasiLayananPage;
 import com.saimen.dspPortal.informasiSettlementPage;
+import com.saimen.dspPortal.informasiUsahaPage;
 import com.saimen.dspPortal.loginPage;
 import com.saimen.dspPortal.oprHomePage;
+
+import tests.dspPortal.model.FDMTestData;
+import util.JsonUtil;
 
 public class dspPortalTest implements ITestListener {
 
     WebDriver driver;
+    int testStatus = 0;
+    private FDMTestData testData;
 
     @BeforeClass
-    public void setEnvironment() {
+    @Parameters({ "testDataPath" })
+    public void setEnvironment(String testDataPath) {
+
+        new File(testDataPath);
+        this.testData = JsonUtil.getTestData(testDataPath, FDMTestData.class);
+
         System.setProperty("webdriver.chrome.driver",
                 "src/test/java/tests/driver/chromedriver.exe");
         ChromeOptions option = new ChromeOptions();
         option.setAcceptInsecureCerts(true);
         driver = new ChromeDriver(option);
         driver.manage().window().maximize();
+
+    }
+
+    @BeforeMethod
+    public void setStatus(Method method) {
+        testStatus = 0;
+        System.out.println("🚀 Akan menjalankan test: " + method.getName());
 
     }
 
@@ -39,6 +63,7 @@ public class dspPortalTest implements ITestListener {
         loginPage.fillUsername("art");
         loginPage.fillPassword("123");
         loginPage.signInClick();
+        testStatus = 1;
 
     }
 
@@ -101,14 +126,36 @@ public class dspPortalTest implements ITestListener {
         settlement.assertNamaPemilik("");
         settlement.selanjutnya();
 
+        informasiUsahaPage usaha = new informasiUsahaPage(driver);
+        usaha.isAt();
+        usaha.isiPemilikUsaha(testData.nama());
+        usaha.isiPekerjaan("Testing");
+        usaha.isiJenisIdentitas("nik");
+        usaha.isiNoIdentitas("123123123123");
+        // usaha.checkClick();
+        usaha.isiTempatLahir("Alam Sutera");
+        usaha.pilihTanggalLahir("10/05/2025");
+        usaha.isiAlamatKtp("Alam Sutera, Tangerang");
+        usaha.isiProvinsiKotaKTP();
+        usaha.isiNoNPWP("12341234123");
+        usaha.isiNamaNPWP("Saimen Test");
+        usaha.isiNoTelp("08123123123");
+        usaha.isiAlamatNPWP("Alam Sutera, Tangerang, Bantan");
+        usaha.isiAlamatUsaha("Alam Sutera, Usaha");
+        usaha.isiProvinsiKotaUsaha();
+        usaha.isiKodePos("40123");
+
+        testStatus = 1;
+
     }
 
     @AfterClass
     public void tearDown() {
-        if (!TestListener.hasFailed) {
+        if (testStatus == 0) {
             System.out.println("Test gagal, driver tidak di-close untuk debugging.");
         } else {
-            driver.quit(); // hanya close jika tidak gagal
+            System.out.println("DEBUG DULU BOZZZZ");
+            // driver.quit(); // hanya close jika tidak gagal
         }
     }
 

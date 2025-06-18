@@ -40,12 +40,12 @@ public class informasiSettlementPage extends AbstractPage {
     @FindBy(xpath = "//input[@id='user_card_name']")
     private WebElement namaPemilikRekening;
 
-    @FindBy(xpath = "//div[@class='content active dstepper-block']//button[@class='btn btn-primary btn-prev']")
+    @FindBy(xpath = "(//span[text()='Sebelumnya'])[2]")
     private WebElement sebelumnyaBtn;
 
-    @FindBy(xpath = "//div[@class='content active dstepper-block']//button[@class='btn btn-warning btn-submit']")
+    @FindBy(xpath = "(//span[text()='Simpan'])[3]")
     private WebElement simpanBtn;
-    @FindBy(xpath = "//div[@class='content active dstepper-block']//button[@class='btn btn-primary btn-next']/span[@class='align-middle d-sm-inline-block d-none me-sm-2']")
+    @FindBy(xpath = "(//span[text()='Selanjutnya'])[3]")
     private WebElement selanjutnyaBtn;
 
     public informasiSettlementPage(WebDriver driver) {

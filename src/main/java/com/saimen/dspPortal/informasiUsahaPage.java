@@ -51,7 +51,7 @@ public class informasiUsahaPage extends AbstractPage {
     @FindBy(xpath = "//li[text()='JAWA BARAT']")
     private WebElement jawaBaratBtn;
 
-    @FindBy(css = "[title='Pilih Kabupaten/Kota KTP']")
+    @FindBy(xpath = "//span[text()='- Pilih Kabupaten/Kota -']")
     private WebElement pilihKotaDropdown;
     @FindBy(xpath = "//li[text()='KOTA BANDUNG']")
     private WebElement bandungBtn;
@@ -71,15 +71,15 @@ public class informasiUsahaPage extends AbstractPage {
     private WebElement provinsiUsahaDropdown;
     @FindBy(xpath = "//li[text()='JAWA BARAT']")
     private WebElement jawaBarat;
-    @FindBy(xpath = "//span[text()='- Pilih Kabupaten/Kota Usaha -']")
+    @FindBy(xpath = "//span[text()='- Pilih Kabupaten/Kota -']")
     private WebElement kotaUsahaDropdown;
     @FindBy(xpath = "//li[text()='KOTA BANDUNG']")
     private WebElement bandung;
-    @FindBy(xpath = "//span[text()='- Pilih Kecamatan Usaha -']")
+    @FindBy(xpath = "//span[text()='- Pilih Kecamatan -']")
     private WebElement kecamatanUsahaDropdown;
     @FindBy(xpath = "//li[text()='Antapani']")
     private WebElement antapani;
-    @FindBy(xpath = "//span[text()='- Pilih Kelurahan Usaha -']")
+    @FindBy(xpath = "//span[text()='- Pilih Kelurahan/Desa -']")
     private WebElement kelurahanUsahaDropdown;
     @FindBy(xpath = "//li[text()='Antapani Tengah']")
     private WebElement antapaniTengah;
@@ -87,13 +87,13 @@ public class informasiUsahaPage extends AbstractPage {
     @FindBy(xpath = "//input[@id='postal_code']")
     private WebElement kodePosField;
 
-    @FindBy(xpath = "//div[@class='content active dstepper-block']//button[@class='btn btn-primary btn-prev']")
+    @FindBy(xpath = "(//span[text()='Sebelumnya'])[3]")
     private WebElement sebelumnyaBtn;
 
-    @FindBy(xpath = "//div[@class='content active dstepper-block']//button[@class='btn btn-warning btn-submit']")
+    @FindBy(xpath = "//button[.='Simpan']")
     private WebElement simpanBtn;
-    @FindBy(xpath = "//div[@class='content active dstepper-block']//button[@class='btn btn-primary btn-next']/span[@class='align-middle d-sm-inline-block d-none me-sm-2']")
-    private WebElement selanjutnyaBtn;
+    @FindBy(xpath = "//button[@class='btn btn-success btn-approve']")
+    private WebElement requestBtn;
 
     public informasiUsahaPage(WebDriver driver) {
         super(driver);
@@ -110,7 +110,11 @@ public class informasiUsahaPage extends AbstractPage {
         picNameField.sendKeys(pemilikUsaha);
     }
 
-    public void pilihJenisIdentitas(String jenisIdentitas) {
+    public void isiPekerjaan(String pekerjaan) {
+        workField.sendKeys(pekerjaan);
+    }
+
+    public void isiJenisIdentitas(String jenisIdentitas) {
         jenisUsahaDropdown.click();
         this.wait.until(ExpectedConditions.visibilityOf(this.nikBtn));
 
@@ -132,11 +136,11 @@ public class informasiUsahaPage extends AbstractPage {
         noIdentitasField.sendKeys(noIdentitas);
     }
 
-    public void isiTempatLahir(String tempatLahir) {
-        tempatLahirField.sendKeys(tempatLahir);
+    public void checkClick() {
+        checkBtn.click();
     }
 
-    public void isiTanggalLahir(String tempatLahir) {
+    public void isiTempatLahir(String tempatLahir) {
         tempatLahirField.sendKeys(tempatLahir);
     }
 
@@ -152,25 +156,21 @@ public class informasiUsahaPage extends AbstractPage {
         tanggalLahirField.click();
 
         while (true) {
-            // Ambil teks bulan dan tahun yang sedang tampil, misal: "Juni 2025"
-            String displayedMonthYear = driver.findElement(By.className("datepicker-switch")).getText();
+            String displayedMonthYear = driver.findElement(By.xpath("(//th[@class='month'])[1]")).getText();
             DateTimeFormatter monthYearFormatter = DateTimeFormatter.ofPattern("MMMM yyyy",
-                    new Locale("id")); // 'Juni
-            // 2025'
+                    new Locale("id"));
             LocalDate displayedDate = YearMonth.parse(displayedMonthYear, monthYearFormatter).atDay(1);
 
             int displayedMonth = displayedDate.getMonthValue();
             int displayedYear = displayedDate.getYear();
 
             if (displayedYear == targetYear && displayedMonth == targetMonth) {
-                break; // Sudah di bulan yang benar
+                break;
             }
 
             if (displayedYear > targetYear || (displayedYear == targetYear && displayedMonth > targetMonth)) {
-                // Klik tombol prev
-                driver.findElement(By.className("prev")).click();
+                driver.findElement(By.xpath("(//th[@class='prev available'])[1]")).click();
             } else {
-                // Klik tombol next
                 driver.findElement(By.className("next")).click();
             }
         }
@@ -239,6 +239,6 @@ public class informasiUsahaPage extends AbstractPage {
     }
 
     public void selanjutnya() {
-        selanjutnyaBtn.click();
+        requestBtn.click();
     }
 }

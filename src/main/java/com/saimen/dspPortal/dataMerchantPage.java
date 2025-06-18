@@ -90,9 +90,9 @@ public class dataMerchantPage extends AbstractPage {
     @FindBy(xpath = "//button[contains(.,'Daftar MOS')]")
     private WebElement daftarMosBtn;
 
-    @FindBy(xpath = "//div[@class='content active dstepper-block']//button[@class='btn btn-warning btn-submit']")
+    @FindBy(xpath = "(//span[text()='Simpan'])[1]")
     private WebElement simpanBtn;
-    @FindBy(xpath = "//div[@class='content active dstepper-block']//button[@class='btn btn-primary btn-next']/span[@class='align-middle d-sm-inline-block d-none me-sm-2']")
+    @FindBy(xpath = "(//span[text()='Selanjutnya'])[1]")
     private WebElement selanjutnyaBtn;
 
     public dataMerchantPage(WebDriver driver) {

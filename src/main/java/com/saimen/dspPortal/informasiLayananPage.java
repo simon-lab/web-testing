@@ -105,12 +105,12 @@ public class informasiLayananPage extends AbstractPage {
     @FindBy(xpath = "//li[text()='UPI']")
     private WebElement kartuUPI;
 
-    @FindBy(xpath = "//div[@class='content active dstepper-block']//button[@class='btn btn-primary btn-prev']")
+    @FindBy(xpath = "(//span[text()='Sebelumnya'])[1]")
     private WebElement sebelumnyaBtn;
 
-    @FindBy(xpath = "//div[@class='content active dstepper-block']//button[@class='btn btn-warning btn-submit']")
+    @FindBy(xpath = "(//span[text()='Simpan'])[2]")
     private WebElement simpanBtn;
-    @FindBy(xpath = "//div[@class='content active dstepper-block']//button[@class='btn btn-primary btn-next']/span[@class='align-middle d-sm-inline-block d-none me-sm-2']")
+    @FindBy(xpath = "(//span[text()='Selanjutnya'])[2]")
     private WebElement selanjutnyaBtn;
 
     public informasiLayananPage(WebDriver driver) {
