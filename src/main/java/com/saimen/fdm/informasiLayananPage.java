@@ -1,4 +1,6 @@
-package com.saimen.dspPortal;
+package com.saimen.fdm;
+
+import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -140,11 +142,11 @@ public class informasiLayananPage extends AbstractPage {
         jenisUsahaDropdown.click();
         this.wait.until(ExpectedConditions.visibilityOf(this.singleBtn));
 
-        if (jenisUsaha == "single") {
+        if ("single".equalsIgnoreCase(jenisUsaha)) {
             singleBtn.click();
-        } else if (jenisUsaha == "multi") {
+        } else if ("multi".equalsIgnoreCase(jenisUsaha)) {
             multiBtn.click();
-        } else if (jenisUsaha == "kosong") {
+        } else if ("kosong".equalsIgnoreCase(jenisUsaha)) {
             kosongUsahaBtn.click();
         } else {
             Assert.fail("Jenis Usaha Tidak Ada");
@@ -152,23 +154,23 @@ public class informasiLayananPage extends AbstractPage {
 
     }
 
-    public void pilihJenisLayanan(String... jenisLayanan) {
-        if (jenisLayanan.length > 5) {
+    public void pilihJenisLayanan(List<String> jenisLayanan) {
+        if (jenisLayanan.size() > 5) {
             throw new IllegalArgumentException("Maksimal hanya boleh 5 parameter");
         }
 
         for (String arg : jenisLayanan) {
             jenisLayananField.click();
             this.wait.until(ExpectedConditions.visibilityOf(this.vKioskLayanan));
-            if ("self order kiosk".equals(arg)) {
+            if ("self order kiosk".equalsIgnoreCase(arg)) {
                 selfOrderLayanan.click();
-            } else if ("vkiosk".equals(arg)) {
+            } else if ("vkiosk".equalsIgnoreCase(arg)) {
                 vKioskLayanan.click();
-            } else if ("edc qr".equals(arg)) {
+            } else if ("edc qr".equalsIgnoreCase(arg)) {
                 edcQrLayanan.click();
-            } else if ("qris e-commerce".equals(arg)) {
+            } else if ("qris e-commerce".equalsIgnoreCase(arg)) {
                 eCommerceLayanan.click();
-            } else if ("qris statis".equals(arg)) {
+            } else if ("qris statis".equalsIgnoreCase(arg)) {
                 qrStatisLayanan.click();
             } else {
                 Assert.fail("Jenis Layanan " + arg + " Tidak Ada");
@@ -183,15 +185,15 @@ public class informasiLayananPage extends AbstractPage {
 
         this.wait.until(ExpectedConditions.visibilityOf(this.regularBtn));
 
-        if (tipeKiosk == "regular") {
+        if ("regular".equalsIgnoreCase(tipeKiosk)) {
             regularBtn.click();
-        } else if (tipeKiosk == "ticketing") {
+        } else if ("ticketing".equalsIgnoreCase(tipeKiosk)) {
             ticketingBtn.click();
-        } else if (tipeKiosk == "reservation") {
+        } else if ("reservation".equalsIgnoreCase(tipeKiosk)) {
             reservationBtn.click();
-        } else if (tipeKiosk == "delivery") {
+        } else if ("delivery".equalsIgnoreCase(tipeKiosk)) {
             deliveryBtn.click();
-        } else if (tipeKiosk == "kosong") {
+        } else if ("kosong".equalsIgnoreCase(tipeKiosk)) {
             deliveryBtn.click();
         } else {
             Assert.fail("Tipe Kiosk Tidak Ada");
@@ -199,21 +201,21 @@ public class informasiLayananPage extends AbstractPage {
 
     }
 
-    public void pilihTipeOrder(String... tipeOrder) {
-        if (tipeOrder.length > 4) {
+    public void pilihTipeOrder(List<String> tipeOrder) {
+        if (tipeOrder.size() > 4) {
             throw new IllegalArgumentException("Maksimal hanya boleh 4 parameter");
         }
 
         for (String arg : tipeOrder) {
             tipeOrderDropdown.click();
             this.wait.until(ExpectedConditions.visibilityOf(this.dineInBtn));
-            if ("dine in".equals(arg)) {
+            if ("dine in".equalsIgnoreCase(arg)) {
                 dineInBtn.click();
-            } else if ("take away".equals(arg)) {
+            } else if ("take away".equalsIgnoreCase(arg)) {
                 takeAwayBtn.click();
-            } else if ("delivery".equals(arg)) {
+            } else if ("delivery".equalsIgnoreCase(arg)) {
                 deliveryOrderBtn.click();
-            } else if ("pick up".equals(arg)) {
+            } else if ("pick up".equalsIgnoreCase(arg)) {
                 pickUpBtn.click();
             } else {
                 Assert.fail("Tipe Order " + arg + " Tidak Ada");
@@ -234,19 +236,19 @@ public class informasiLayananPage extends AbstractPage {
         adminFeeField.sendKeys(biayaAdmin);
     }
 
-    public void pilihMetodePembayaran(String... metodePelayanan) {
-        if (metodePelayanan.length > 3) {
+    public void pilihMetodePembayaran(List<String> metodePelayanan) {
+        if (metodePelayanan.size() > 3) {
             throw new IllegalArgumentException("Maksimal hanya boleh 3 parameter");
         }
 
         for (String arg : metodePelayanan) {
             metodePembayaranField.click();
             this.wait.until(ExpectedConditions.visibilityOf(this.qrisMetode));
-            if ("qris".equals(arg)) {
+            if ("qris".equalsIgnoreCase(arg)) {
                 qrisMetode.click();
-            } else if ("debit".equals(arg)) {
+            } else if ("debit".equalsIgnoreCase(arg)) {
                 debitMetode.click();
-            } else if ("e-money".equals(arg)) {
+            } else if ("e-money".equalsIgnoreCase(arg)) {
                 eMoneyMetode.click();
             } else {
                 Assert.fail("Metode Pelayanan " + arg + " Tidak Ada");
@@ -275,21 +277,21 @@ public class informasiLayananPage extends AbstractPage {
         jumlahEdcField.sendKeys(jumlah);
     }
 
-    public void pilihJenisKartu(String... jenisKartu) {
-        if (jenisKartu.length > 4) {
+    public void pilihJenisKartu(List<String> jenisKartu) {
+        if (jenisKartu.size() > 4) {
             throw new IllegalArgumentException("Maksimal hanya boleh 4 parameter");
         }
 
         for (String arg : jenisKartu) {
             jenisKartuField.click();
             this.wait.until(ExpectedConditions.visibilityOf(this.kartuMaster));
-            if ("visa".equals(arg)) {
+            if ("visa".equalsIgnoreCase(arg)) {
                 kartuVisa.click();
-            } else if ("master".equals(arg)) {
+            } else if ("master".equalsIgnoreCase(arg)) {
                 kartuMaster.click();
-            } else if ("jcb".equals(arg)) {
+            } else if ("jcb".equalsIgnoreCase(arg)) {
                 kartuJCB.click();
-            } else if ("upi".equals(arg)) {
+            } else if ("upi".equalsIgnoreCase(arg)) {
                 kartuUPI.click();
             } else {
                 Assert.fail("Kartu " + arg + " Tidak Ada");

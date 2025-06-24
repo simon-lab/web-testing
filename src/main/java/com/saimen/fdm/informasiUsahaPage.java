@@ -1,4 +1,4 @@
-package com.saimen.dspPortal;
+package com.saimen.fdm;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
@@ -118,13 +118,13 @@ public class informasiUsahaPage extends AbstractPage {
         jenisUsahaDropdown.click();
         this.wait.until(ExpectedConditions.visibilityOf(this.nikBtn));
 
-        if (jenisIdentitas == "nik") {
+        if ("nik".equalsIgnoreCase(jenisIdentitas)) {
             nikBtn.click();
-        } else if (jenisIdentitas == "paspor") {
+        } else if ("paspor".equalsIgnoreCase(jenisIdentitas)) {
             pasportBtn.click();
-        } else if (jenisIdentitas == "kitas") {
+        } else if ("kitas".equalsIgnoreCase(jenisIdentitas)) {
             kitasBtn.click();
-        } else if (jenisIdentitas == "kosong") {
+        } else if ("kosong".equalsIgnoreCase(jenisIdentitas)) {
             kosongBtn.click();
         } else {
             Assert.fail("Jenis Identitas Tidak Ada");

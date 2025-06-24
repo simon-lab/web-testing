@@ -1,4 +1,6 @@
-package com.saimen.dspPortal;
+package com.saimen.fdm;
+
+import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -30,6 +32,12 @@ public class informasiSettlementPage extends AbstractPage {
 
     @FindBy(css = "[title='Pilih Bank']")
     private WebElement pilihBankDropdown;
+    @FindBy(xpath = "(//input[@type='search'])[6]")
+    private WebElement cariBank;
+    @FindBy(xpath = "//li[@class='select2-results__option select2-results__option--highlighted']")
+    private WebElement bankTerpilih;
+    @FindBy(xpath = "//div[@class='swal2-html-container']")
+    private WebElement bankValid;
     @FindBy(xpath = "//li[text()='125 - KALTENG-BANK KALTENG']")
     private WebElement kaltengBank;
 
@@ -39,6 +47,8 @@ public class informasiSettlementPage extends AbstractPage {
     private WebElement inqBtn;
     @FindBy(xpath = "//input[@id='user_card_name']")
     private WebElement namaPemilikRekening;
+    @FindBy(xpath = "//input[@id='branch_name']")
+    private WebElement kcKcpField;
 
     @FindBy(xpath = "(//span[text()='Sebelumnya'])[2]")
     private WebElement sebelumnyaBtn;
@@ -71,19 +81,19 @@ public class informasiSettlementPage extends AbstractPage {
         emailField.sendKeys(email);
     }
 
-    public void supportCard(String... card) {
-        if (card.length > 5) {
+    public void supportCard(List<String> card) {
+        if (card.size() > 5) {
             throw new IllegalArgumentException("Maksimal hanya boleh 5 parameter");
         }
 
         for (String arg : card) {
             supportCardField.click();
             this.wait.until(ExpectedConditions.visibilityOf(this.creditCard));
-            if ("credit card".equals(arg)) {
+            if ("credit card".equalsIgnoreCase(arg)) {
                 creditCard.click();
-            } else if ("debit card".equals(arg)) {
+            } else if ("debit card".equalsIgnoreCase(arg)) {
                 debitCard.click();
-            } else if ("e-money".equals(arg)) {
+            } else if ("e-money".equalsIgnoreCase(arg)) {
                 eMoney.click();
             } else {
                 Assert.fail("Karuti " + arg + " Tidak Ada");
@@ -92,9 +102,10 @@ public class informasiSettlementPage extends AbstractPage {
 
     }
 
-    public void pilihBank() {
+    public void pilihBank(String noBank) {
         pilihBankDropdown.click();
-        kaltengBank.click();
+        cariBank.sendKeys(noBank);
+        bankTerpilih.click();
     }
 
     public void isiNoRekening(String noRekening) {
@@ -106,7 +117,13 @@ public class informasiSettlementPage extends AbstractPage {
     }
 
     public void assertNamaPemilik(String namaPemilik) {
-        Assert.assertEquals(namaPemilik, "");
+        this.wait.until(ExpectedConditions.visibilityOf(bankValid));
+        this.wait.until(ExpectedConditions.visibilityOf(namaPemilikRekening));
+        Assert.assertEquals(namaPemilikRekening.getAttribute("value"), namaPemilik);
+    }
+
+    public void isKcKcp(String kcKcp) {
+        kcKcpField.sendKeys(kcKcp);
     }
 
     public void sebelumnya() {

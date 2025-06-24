@@ -1,4 +1,4 @@
-package com.saimen.dspPortal;
+package com.saimen.fdm;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,8 +23,8 @@ public class dataMerchantPage extends AbstractPage {
     @FindBy(xpath = "//li[text()='SSDI']")
     private WebElement ssdiFdm;
 
-    @FindBy(css = "[title='Pilih Kategori Merchant']")
-    private WebElement pilihKategoriDropdown;
+    @FindBy(css = "[title='Pilih Kategori Usaha']")
+    private WebElement pilihKategoriUsahaDropdown;
     @FindBy(xpath = "//li[text()='Badan Usaha']")
     private WebElement kategoriBadanUsaha;
     @FindBy(xpath = "//li[text()='Perseorangan']")
@@ -76,8 +76,8 @@ public class dataMerchantPage extends AbstractPage {
     @FindBy(xpath = "//input[@id='omset']")
     private WebElement omsetField;
 
-    @FindBy(css = "[title='Pilih Kategori usaha']")
-    private WebElement usahaDropdown;
+    @FindBy(xpath = "//*[@id=\"select2-trx_type-container\"]")
+    private WebElement pilihKategoriMerchantDropdown;
     @FindBy(xpath = "//li[text()='(Usaha Mikro) UMI']")
     private WebElement usahaMikro;
     @FindBy(xpath = "//li[text()='(Usaha Kecil) UKE']")
@@ -109,13 +109,13 @@ public class dataMerchantPage extends AbstractPage {
     public void pilihSumberFDM(String sumber) {
         sumberFdmDropDown.click();
 
-        if (sumber == "reguler") {
+        if ("reguler".equalsIgnoreCase(sumber)) {
             regulerFdm.click();
-        } else if (sumber == "bcas") {
+        } else if ("bcas".equalsIgnoreCase(sumber)) {
             bcasFdm.click();
-        } else if (sumber == "parimanta") {
+        } else if ("parimanta".equalsIgnoreCase(sumber)) {
             parimantaFdm.click();
-        } else if (sumber == "ssdi") {
+        } else if ("ssdi".equalsIgnoreCase(sumber)) {
             ssdiFdm.click();
         } else {
             Assert.fail("Sumber FDM Tidak Ada");
@@ -123,16 +123,16 @@ public class dataMerchantPage extends AbstractPage {
 
     }
 
-    public void pilihKategoriMerchant(String kategoriMerchant) {
-        pilihKategoriDropdown.click();
+    public void pilihKategoriUsaha(String kategoriMerchant) {
+        pilihKategoriUsahaDropdown.click();
 
-        if (kategoriMerchant == "badan usaha") {
+        if ("badan usaha".equalsIgnoreCase(kategoriMerchant)) {
             kategoriBadanUsaha.click();
-        } else if (kategoriMerchant == "perseorangan") {
+        } else if ("perseorangan".equalsIgnoreCase(kategoriMerchant)) {
             kategoriPerseorangan.click();
-        } else if (kategoriMerchant == "charity") {
+        } else if ("charity".equalsIgnoreCase(kategoriMerchant)) {
             kategoriCharity.click();
-        } else if (kategoriMerchant == "pendidikan") {
+        } else if ("pendidikan".equalsIgnoreCase(kategoriMerchant)) {
             kategoriPendidikan.click();
         } else {
             Assert.fail("Kategori Merchant Tidak Ada");
@@ -184,19 +184,19 @@ public class dataMerchantPage extends AbstractPage {
         boatRental.click();
     }
 
-    public void isiOnset(String omset) {
+    public void isiOmset(String omset) {
         omsetField.sendKeys(omset);
     }
 
-    public void pilihKategoriUsaha(String kategoriUsaha) {
-        usahaDropdown.click();
-        if (kategoriUsaha == "umi") {
+    public void pilihKategoriMerchant(String kategoriUsaha) {
+        pilihKategoriMerchantDropdown.click();
+        if ("umi".equalsIgnoreCase(kategoriUsaha)) {
             usahaMikro.click();
-        } else if (kategoriUsaha == "uke") {
+        } else if ("uke".equalsIgnoreCase(kategoriUsaha)) {
             usahaKecil.click();
-        } else if (kategoriUsaha == "ume") {
+        } else if ("ume".equalsIgnoreCase(kategoriUsaha)) {
             usahaMenengah.click();
-        } else if (kategoriUsaha == "ube") {
+        } else if ("ube".equalsIgnoreCase(kategoriUsaha)) {
             usahaBesar.click();
         } else {
             Assert.fail("Kategori Merchant Tidak Ada");
