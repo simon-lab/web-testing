@@ -25,7 +25,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -39,7 +39,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Web_Testing" class="navigator-link">
-              <span class="suite-name border-passed">Web Testing</span>
+              <span class="suite-name border-failed">Web Testing</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -92,7 +92,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">5 methods, 1 failed,   4 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Web_Testing" class="hide-methods failed suite-Web_Testing"> (hide)</a> <!-- hide-methods failed suite-Web_Testing -->
+                      <a href="#" panel-name="suite-Web_Testing" class="show-methods failed suite-Web_Testing"> (show)</a> <!-- show-methods failed suite-Web_Testing -->
+                    </span>
+                    <div class="method-list-content failed suite-Web_Testing">
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Web_Testing" title="tests.dspPortal.dspPortalTest" class="method navigator-link" hash-for-method="assertDetailAfterBuatMOS">assertDetailAfterBuatMOS</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-Web_Testing -->
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -103,7 +117,22 @@
                     <div class="method-list-content passed suite-Web_Testing">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Web_Testing" title="tests.dspPortal.dspPortalTest" class="method navigator-link" hash-for-method="normalScoring">normalScoring</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Web_Testing" title="tests.dspPortal.dspPortalTest" class="method navigator-link" hash-for-method="normalFdmPage">normalFdmPage</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Web_Testing" title="tests.dspPortal.dspPortalTest" class="method navigator-link" hash-for-method="normalLayananPage">normalLayananPage</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Web_Testing" title="tests.dspPortal.dspPortalTest" class="method navigator-link" hash-for-method="normalSettlement">normalSettlement</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Web_Testing" title="tests.dspPortal.dspPortalTest" class="method navigator-link" hash-for-method="normalUsaha">normalUsaha</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Web_Testing -->
@@ -118,6 +147,28 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Web_Testing" class="panel Web_Testing">
+          <div class="suite-Web_Testing-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">tests.dspPortal.dspPortalTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="assertDetailAfterBuatMOS">
+                  </a> <!-- assertDetailAfterBuatMOS -->
+                  <span class="method-name">assertDetailAfterBuatMOS</span>
+                  <div class="stack-trace">java.lang.AssertionError: The following asserts failed:
+	expected [Saimen Test Nama Merchant] but found [Saimen Test Nama Merchant TNWE],
+	expected [Saimen Test PIC Usaha] but found [Saimen Test PIC Usaha TNWE]
+	at tests.dspPortal.dspPortalTest.assertDetailAfterBuatMOS(dspPortalTest.java:206)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+... Removed 31 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Web_Testing-class-failed -->
           <div class="suite-Web_Testing-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
@@ -126,9 +177,30 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="normalScoring">
-                  </a> <!-- normalScoring -->
-                  <span class="method-name">normalScoring</span>
+                  <a name="normalFdmPage">
+                  </a> <!-- normalFdmPage -->
+                  <span class="method-name">normalFdmPage</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="normalLayananPage">
+                  </a> <!-- normalLayananPage -->
+                  <span class="method-name">normalLayananPage</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="normalSettlement">
+                  </a> <!-- normalSettlement -->
+                  <span class="method-name">normalSettlement</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="normalUsaha">
+                  </a> <!-- normalUsaha -->
+                  <span class="method-name">normalUsaha</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -186,16 +258,32 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(5);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'normalScoring')
+data.setCell(0, 1, 'normalUsaha')
 data.setCell(0, 2, 'tests.dspPortal.dspPortalTest')
-data.setCell(0, 3, 2334);
+data.setCell(0, 3, 15210);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'assertDetailAfterBuatMOS')
+data.setCell(1, 2, 'tests.dspPortal.dspPortalTest')
+data.setCell(1, 3, 8579);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'normalFdmPage')
+data.setCell(2, 2, 'tests.dspPortal.dspPortalTest')
+data.setCell(2, 3, 3728);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'normalLayananPage')
+data.setCell(3, 2, 'tests.dspPortal.dspPortalTest')
+data.setCell(3, 3, 1518);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'normalSettlement')
+data.setCell(4, 2, 'tests.dspPortal.dspPortalTest')
+data.setCell(4, 3, 654);
 window.suiteTableData['Web_Testing']= { tableData: data, tableDiv: 'times-div-Web_Testing'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 2 seconds</span>
+              <span class="suite-total-time">Total running time: 29 seconds</span>
               <div id="times-div-Web_Testing">
               </div> <!-- times-div-Web_Testing -->
             </div> <!-- times-div -->
@@ -227,16 +315,50 @@ return data;
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-class before -->
               <div class="configuration-method before">
-                <span class="method-name">setStatus(public void tests.dspPortal.dspPortalTest.normalScoring())</span>
-                <span class="method-start">6051 ms</span>
+                <span class="method-name">setStatus(public void tests.dspPortal.dspPortalTest.normalFdmPage())</span>
+                <span class="method-start">7435 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">normalScoring</span>
-                <span class="method-start">6097 ms</span>
+                <span class="method-name">normalFdmPage</span>
+                <span class="method-start">7469 ms</span>
               </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">setStatus(public void tests.dspPortal.dspPortalTest.normalLayananPage())</span>
+                <span class="method-start">11217 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">normalLayananPage</span>
+                <span class="method-start">11217 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">setStatus(public void tests.dspPortal.dspPortalTest.normalSettlement())</span>
+                <span class="method-start">12737 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">normalSettlement</span>
+                <span class="method-start">12739 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">setStatus(public void tests.dspPortal.dspPortalTest.normalUsaha())</span>
+                <span class="method-start">13393 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">normalUsaha</span>
+                <span class="method-start">13395 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">assertDetailAfterBuatMOS</span>
+                <span class="method-start">28605 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">setStatus(void tests.dspPortal.dspPortalTest.assertDetailAfterBuatMOS())</span>
+                <span class="method-start">28605 ms</span>
+              </div> <!-- configuration-method before -->
               <div class="configuration-class after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">8439 ms</span>
+                <span class="method-start">37188 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

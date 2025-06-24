@@ -26,6 +26,7 @@ import com.saimen.fdm.oprHomePage;
 
 import tests.dspPortal.model.FDMTestData;
 import tests.reusableMethod.generatingDateToday;
+import tests.reusableMethod.generatingString;
 import util.JsonUtil;
 
 public class dspPortalTest implements ITestListener {
@@ -44,6 +45,11 @@ public class dspPortalTest implements ITestListener {
     informasiUsahaPage usaha;
     fdmDetailPage detail;
     analystPage analystPage;
+
+    String uniqString = generatingString.generateUniqueCode();
+    String namaMerchant;
+    String namaPerusahaan;
+    String namaPemilikMerchant;
 
     @BeforeClass
     @Parameters({ "testDataPath" })
@@ -79,6 +85,11 @@ public class dspPortalTest implements ITestListener {
         loginPage.signInClick();
         oprHomePage.isAt();
         oprHomePage.fdmClick();
+
+        namaMerchant = testData.namaMerchant() + " " + uniqString;
+        namaPerusahaan = testData.namaPerusahaan() + " " + uniqString;
+        namaPemilikMerchant = testData.namaPICUsaha() + " " + uniqString;
+
     }
 
     @BeforeMethod
@@ -88,112 +99,114 @@ public class dspPortalTest implements ITestListener {
 
     }
 
-    // @Test(priority = 0)
-    // public void normalFdmPage() {
+    @Test(priority = 0)
+    public void normalFdmPage() {
 
-    // fdmPage.isAt();
-    // fdmPage.buatMOS();
+        fdmPage.isAt();
+        fdmPage.buatMOS();
 
-    // dataMerchant.isAt();
-    // System.out.println(testData.sumberFDM());
-    // dataMerchant.pilihSumberFDM(testData.sumberFDM());
-    // dataMerchant.pilihKategoriUsaha(testData.kategoriMerchant());
-    // dataMerchant.isiNamaMerchant(testData.namaMerchant());
-    // dataMerchant.isiNamaPerusahaan(testData.namaPerusahaan());
-    // dataMerchant.isiAlamat(testData.alamatKorespondensi());
-    // dataMerchant.isiProvinsiKota();
-    // dataMerchant.isiKodePos(testData.kodePosKorespondensi());
-    // dataMerchant.isiCityPten(testData.cityPten());
-    // dataMerchant.pilihCountry();
-    // dataMerchant.pilihMCC();
-    // dataMerchant.isiOmset(testData.omset());
-    // dataMerchant.pilihKategoriMerchant(testData.kategoriUsaha());
-    // dataMerchant.selanjutnya();
+        dataMerchant.isAt();
+        System.out.println(testData.sumberFDM());
+        dataMerchant.pilihSumberFDM(testData.sumberFDM());
+        dataMerchant.pilihKategoriUsaha(testData.kategoriMerchant());
+        dataMerchant.isiNamaMerchant(namaMerchant);
+        dataMerchant.isiNamaPerusahaan(namaPerusahaan);
+        dataMerchant.isiAlamat(testData.alamatKorespondensi());
+        dataMerchant.isiProvinsiKota();
+        dataMerchant.isiKodePos(testData.kodePosKorespondensi());
+        dataMerchant.isiCityPten(testData.cityPten());
+        dataMerchant.pilihCountry();
+        dataMerchant.pilihMCC();
+        dataMerchant.isiOmset(testData.omset());
+        dataMerchant.pilihKategoriMerchant(testData.kategoriUsaha());
+        dataMerchant.selanjutnya();
 
-    // testStatus = 1;
-    // }
+        testStatus = 1;
+    }
 
-    // @Test(priority = 1)
-    // public void normalLayananPage() {
-    // layanan.isAt();
-    // layanan.isiPICUsaha(testData.namaPICUsaha());
-    // layanan.isiNoTelp(testData.noTelpLayanan());
-    // layanan.isiEmail(testData.emailLayanan());
-    // layanan.pilihJenisUsaha(testData.jenisUsaha());
-    // layanan.pilihJenisLayanan(testData.jenisLayanan());
-    // layanan.pilihTipeKiosk(testData.tipeKiosk());
-    // layanan.pilihTipeOrder(testData.tipeOrder());
-    // layanan.isiPPN(testData.ppn());
-    // layanan.isiServiceCharge(testData.serviceCharge());
-    // layanan.isiBiayaAdmin(testData.adminFee());
-    // layanan.pilihMetodePembayaran(testData.metodePembayaran());
-    // layanan.activeOnline();
-    // layanan.isiActiveOnline(testData.online());
-    // layanan.activeOffline();
-    // layanan.isiActiveOffline(testData.offline());
-    // layanan.isiJumlahEDC(testData.jumlahEDC());
-    // layanan.pilihJenisKartu(testData.jenisKartu());
-    // layanan.selanjutnya();
+    @Test(priority = 1)
+    public void normalLayananPage() {
+        layanan.isAt();
+        layanan.isiPICUsaha(namaPemilikMerchant);
+        layanan.isiNoTelp(testData.noTelpLayanan());
+        layanan.isiEmail(testData.emailLayanan());
+        layanan.pilihJenisUsaha(testData.jenisUsaha());
+        layanan.pilihJenisLayanan(testData.jenisLayanan());
+        layanan.pilihTipeKiosk(testData.tipeKiosk());
+        layanan.pilihTipeOrder(testData.tipeOrder());
+        layanan.isiPPN(testData.ppn());
+        layanan.isiServiceCharge(testData.serviceCharge());
+        layanan.isiBiayaAdmin(testData.adminFee());
+        layanan.pilihMetodePembayaran(testData.metodePembayaran());
+        layanan.activeOnline();
+        layanan.isiActiveOnline(testData.online());
+        layanan.activeOffline();
+        layanan.isiActiveOffline(testData.offline());
+        layanan.isiJumlahEDC(testData.jumlahEDC());
+        layanan.pilihJenisKartu(testData.jenisKartu());
+        layanan.selanjutnya();
 
-    // testStatus = 1;
-    // }
+        testStatus = 1;
+    }
 
-    // @Test(priority = 2)
-    // public void normalSettlement() {
-    // settlement.isAt();
-    // settlement.isiPICFinance(testData.namaPICFinance());
-    // settlement.isiEmail(testData.emailFinance());
-    // settlement.isiNoTelp(testData.noTelpFinance());
-    // settlement.supportCard(testData.supportCard());
-    // settlement.pilihBank(testData.noBank());
-    // settlement.isiNoRekening(testData.noRekening());
-    // settlement.inqClick();
-    // // settlement.assertNamaPemilik(testData.namaPemilikRekening());
-    // settlement.isKcKcp(testData.kcKcp());
-    // settlement.selanjutnya();
+    @Test(priority = 2)
+    public void normalSettlement() {
+        settlement.isAt();
+        settlement.isiPICFinance(testData.namaPICFinance());
+        settlement.isiEmail(testData.emailFinance());
+        settlement.isiNoTelp(testData.noTelpFinance());
+        settlement.supportCard(testData.supportCard());
+        settlement.pilihBank(testData.noBank());
+        settlement.isiNoRekening(testData.noRekening());
+        settlement.inqClick();
+        // settlement.assertNamaPemilik(testData.namaPemilikRekening());
+        settlement.isKcKcp(testData.kcKcp());
+        settlement.selanjutnya();
 
-    // testStatus = 1;
-    // }
+        testStatus = 1;
+    }
 
-    // @Test(priority = 3)
-    // public void normalUsaha() {
+    @Test(priority = 3)
+    public void normalUsaha() {
 
-    // usaha.isAt();
-    // usaha.isiPemilikUsaha(testData.namaPemilikUsaha());
-    // usaha.isiPekerjaan(testData.pekerjaan());
-    // usaha.isiJenisIdentitas(testData.jenisIdentitas());
-    // usaha.isiNoIdentitas(testData.noIdentitasKTP());
-    // // usaha.checkClick();
-    // usaha.isiTempatLahir(testData.tempatLahir());
-    // usaha.pilihTanggalLahir(testData.tanggalLahir());
-    // usaha.isiAlamatKtp(testData.alamatKTP());
-    // usaha.isiProvinsiKotaKTP();
-    // usaha.isiNoNPWP(testData.noNPWP());
-    // usaha.isiNamaNPWP(testData.namaNPWP());
-    // usaha.isiNoTelp(testData.noTelpPemilik());
-    // usaha.isiAlamatNPWP(testData.alamatNPWP());
-    // usaha.isiAlamatUsaha(testData.alamatUsaha());
-    // usaha.isiProvinsiKotaUsaha();
-    // usaha.isiKodePos(testData.kodePos());
-    // usaha.simpan();
+        usaha.isAt();
+        usaha.isiPemilikUsaha(testData.namaPemilikUsaha());
+        usaha.isiPekerjaan(testData.pekerjaan());
+        usaha.isiJenisIdentitas(testData.jenisIdentitas());
+        usaha.isiNoIdentitas(testData.noIdentitasKTP());
+        // usaha.checkClick();
+        usaha.isiTempatLahir(testData.tempatLahir());
+        usaha.pilihTanggalLahir(testData.tanggalLahir());
+        usaha.isiAlamatKtp(testData.alamatKTP());
+        usaha.isiProvinsiKotaKTP();
+        usaha.isiNoNPWP(testData.noNPWP());
+        usaha.isiNamaNPWP(testData.namaNPWP());
+        usaha.isiNoTelp(testData.noTelpPemilik());
+        usaha.isiAlamatNPWP(testData.alamatNPWP());
+        usaha.isiAlamatUsaha(testData.alamatUsaha());
+        usaha.isiProvinsiKotaUsaha();
+        usaha.isiKodePos(testData.kodePos());
+        usaha.simpan();
 
-    // // fdmPage.deleteClick();
+        // fdmPage.deleteClick();
 
-    // testStatus = 1;
+        testStatus = 1;
 
-    // }
+    }
 
-    // @Test(priority = 4)
-    // void assertDetailAfterBuatMOS() {
-    // fdmPage.assertData(testData.namaMerchant(), testData.namaPerusahaan(),
-    // testData.namaPemilikUsaha(), dateToday);
-    // fdmPage.detailClick();
+    @Test(priority = 4)
+    void assertDetailAfterBuatMOS() {
+        fdmPage.isAt();
+        int kolomTerkait = fdmPage.cariKolom(namaMerchant);
+        fdmPage.assertData(testData.namaMerchant(), testData.namaPerusahaan(),
+                testData.namaPemilikUsaha(), dateToday, "DRAFT", kolomTerkait, uniqString);
+        fdmPage.detailClick(kolomTerkait);
 
-    // detailCheck.detailAssert(driver, testData, detail, softAssert);
-    // softAssert.assertAll();
+        detailCheck.detailAssert(driver, testData, detail, softAssert);
+        softAssert.assertAll();
 
-    // testStatus = 1;
-    // }
+        testStatus = 1;
+    }
 
     // @Test(priority = 5)
     // public void assertScoringPageDataAndOption() {
@@ -216,20 +229,21 @@ public class dspPortalTest implements ITestListener {
     // testStatus = 1;
     // }
 
-    @Test
-    public void normalScoring() {
-        fdmPage.isAt();
-        fdmPage.analystClick();
-        // analystPage.pilihPenggunaJasaResiko("Presiden");
-        analystPage.pilihIdentitasPengguna("Data atau informasi identitas"); // score 3
-        analystPage.pilihLokasiUsaha("Berada di kota"); // score 1
-        analystPage.pilihProfilPenggunaJasa("Merchant adalah pegawai perusahaan");// score 1
-        analystPage.pilihKegiatanUsaha("perusahaan publik atau perusahaan yang terdaftar");// score 1
-        analystPage.pilihKategoriNegara("Merchant tidak masuk kedalam");// score 4
-        analystPage.assertTotal("10", "LOW");
-        analystPage.assertCddEdd("cdd");
-        analystPage.tidakDTTOT();
-    }
+    // @Test
+    // public void normalScoring() {
+    // // analystPage.pilihPenggunaJasaResiko("Presiden");
+    // analystPage.pilihIdentitasPengguna("Data atau informasi identitas"); // score
+    // 3
+    // analystPage.pilihLokasiUsaha("Berada di kota"); // score 1
+    // analystPage.pilihProfilPenggunaJasa("Merchant adalah pegawai perusahaan");//
+    // score 1
+    // analystPage.pilihKegiatanUsaha("perusahaan publik atau perusahaan yang
+    // terdaftar");// score 1
+    // analystPage.pilihKategoriNegara("Merchant tidak masuk kedalam");// score 4
+    // analystPage.assertTotal("10", "LOW");
+    // analystPage.assertCddEdd("cdd");
+    // analystPage.tidakDTTOT();
+    // }
 
     @AfterClass
     public void tearDown() {

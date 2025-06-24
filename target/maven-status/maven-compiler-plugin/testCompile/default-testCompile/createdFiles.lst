@@ -1,5 +1,6 @@
 tests\dspPortal\model\FDMTestData.class
 tests\dspPortal\detailCheck.class
+tests\reusableMethod\generatingString.class
 util\ResourceLoader.class
 tests\reusableMethod\generatingDateToday.class
 util\JsonUtil.class

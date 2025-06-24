@@ -1,5 +1,8 @@
 package com.saimen.fdm;
 
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,6 +28,8 @@ public class fdmPage extends AbstractPage {
     private WebElement statusBtn;
     @FindBy(xpath = "//div[@id='mosList_filter']//input[@class='form-control form-control-sm']")
     private WebElement searchFunc;
+    @FindBy(xpath = "//table/tbody/tr")
+    private List<WebElement> rowList;
     @FindBy(xpath = "//table/tbody/tr[2]/td[2]")
     private WebElement namaMerchant;
     @FindBy(xpath = "//table/tbody/tr[2]/td[3]")
@@ -81,23 +86,53 @@ public class fdmPage extends AbstractPage {
         analystBtn.click();
     }
 
+    public int cariKolom(String namaMerchant) {
+
+        List<WebElement> rows = wait.until(ExpectedConditions.visibilityOfAllElements(rowList));
+
+        for (int i = 0; i < rows.size(); i++) {
+            List<WebElement> columns = rows.get(i).findElements(By.tagName("td"));
+
+            if (columns.size() >= 2) {
+                String merchantText = columns.get(1).getText().trim(); // kolom ke-2
+                if (merchantText.equalsIgnoreCase(namaMerchant)) {
+                    System.out.println("Kolom ke - " + (i + 1));
+                    return i + 1;
+                }
+            }
+        }
+
+        Assert.fail("Tidak ada Nama Merchant yang sesuai: " + namaMerchant);
+        return -1;
+    }
+
     public void assertData(String expectedNamaMerchant, String expectedNamaPerusahaan, String expectedPemilikMerchant,
-            String expectedTglDaftar) {
+            String expectedTglDaftar, String expectedStatus, int kolomBerapa, String unikString) {
 
         this.wait.until(ExpectedConditions.visibilityOf(this.namaMerchant));
 
-        Assert.assertEquals(namaMerchant.getText(), expectedNamaMerchant);
+        Assert.assertEquals(driver.findElement(By.xpath("//table/tbody/tr[" + kolomBerapa + "]/td[2]")).getText(),
+                expectedNamaMerchant + " " + unikString);
+        Assert.assertTrue(driver.findElement(By.xpath("//table/tbody/tr[" + kolomBerapa + "]/td[3]")).getText()
+                .equalsIgnoreCase(expectedNamaPerusahaan + " " + unikString));
+        // Assert.assertEquals(driver.findElement(By.xpath("//table/tbody/tr[" +
+        // kolomBerapa + "]/td[4]")).getText(),
+        // expectedPemilikMerchant + " " + unikString);
+        Assert.assertEquals(driver.findElement(By.xpath("//table/tbody/tr[" + kolomBerapa + "]/td[5]")).getText(),
+                expectedTglDaftar);
+        Assert.assertEquals(driver.findElement(By.xpath("//table/tbody/tr[" + kolomBerapa + "]/td[6]/span")).getText(),
+                expectedStatus);
         // Assert.assertEquals(namaPerusahaan.getText(), expectedNamaPerusahaan);
         // Assert.assertEquals(pemilikMerchant.getText(), expectedPemilikMerchant);
-        Assert.assertEquals(tglDaftar.getText(), expectedTglDaftar);
+        // Assert.assertEquals(tglDaftar.getText(), expectedTglDaftar);
     }
 
     public void editClick() {
         editBtn.click();
     }
 
-    public void detailClick() {
-        detailBtn.click();
+    public void detailClick(int kolomBerapa) {
+        driver.findElement(By.xpath("(//button[@class='btn btn-secondary btn-xs'])[" + kolomBerapa + "]")).click();
     }
 
     public void deleteClick() {
