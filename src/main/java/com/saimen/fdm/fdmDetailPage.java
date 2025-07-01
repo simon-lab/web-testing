@@ -151,12 +151,13 @@ public class fdmDetailPage extends AbstractPage {
         softAssert.assertEquals(kategoriMerchant.getText(), expectedKategoriMerchant);
     }
 
-    public void assertNamaMerchant(String expectedNamaMerchant, SoftAssert softAssert) {
-        softAssert.assertEquals(namaMerchant.getText(), expectedNamaMerchant);
+    public void assertNamaMerchant(String expectedNamaMerchant, SoftAssert softAssert, String uniqString) {
+        softAssert.assertEquals(namaMerchant.getText(), expectedNamaMerchant + " " + uniqString);
     }
 
-    public void assertNamaPerusahaan(String expectedNamaPerusahaan, SoftAssert softAssert) {
-        softAssert.assertEquals(namaPerusahaan.getText(), expectedNamaPerusahaan);
+    public void assertNamaPerusahaan(String expectedNamaPerusahaan, SoftAssert softAssert, String uniqString) {
+        softAssert.assertTrue((namaPerusahaan.getText())
+                .equalsIgnoreCase(expectedNamaPerusahaan + " " + uniqString));
     }
 
     public void assertAlamatKorespondensi(String expectedAlamatKorespondensi, SoftAssert softAssert) {
@@ -219,8 +220,8 @@ public class fdmDetailPage extends AbstractPage {
         softAssert.assertEquals(kategoriUsaha.getText(), expected);
     }
 
-    public void assertNamaPICUsaha(String expectedNamaPICUsaha, SoftAssert softAssert) {
-        softAssert.assertEquals(namaPICUsaha.getText(), expectedNamaPICUsaha);
+    public void assertNamaPICUsaha(String expectedNamaPICUsaha, SoftAssert softAssert, String uniqString) {
+        softAssert.assertEquals(namaPICUsaha.getText(), expectedNamaPICUsaha + " " + uniqString);
     }
 
     public void assertNoTelpPICUsaha(String expectedNoTelpPICUsaha, SoftAssert softAssert) {
@@ -343,8 +344,8 @@ public class fdmDetailPage extends AbstractPage {
         softAssert.assertEquals(kcKcp.getText(), expectedKcKcp);
     }
 
-    public void assertNamaPemilikUsaha(String expectedNamaPemilikUsaha, SoftAssert softAssert) {
-        softAssert.assertEquals(namaPemilikUsaha.getText(), expectedNamaPemilikUsaha);
+    public void assertNamaPemilikUsaha(String expectedNamaPemilikUsaha, SoftAssert softAssert, String uniqString) {
+        softAssert.assertEquals(namaPemilikUsaha.getText(), expectedNamaPemilikUsaha + " " + uniqString);
     }
 
     public void assertPekerjaan(String expectedPekerjaan, SoftAssert softAssert) {

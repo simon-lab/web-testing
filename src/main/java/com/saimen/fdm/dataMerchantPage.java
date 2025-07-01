@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import com.saimen.AbstractPage;
 
@@ -12,7 +13,7 @@ public class dataMerchantPage extends AbstractPage {
     @FindBy(xpath = "//h6[contains(.,'Merchant')]")
     private WebElement validator;
 
-    @FindBy(css = "[title='Pilih Sumber FDM']")
+    @FindBy(xpath = "//*[@id='select2-sumber_fdm-container']")
     private WebElement sumberFdmDropDown;
     @FindBy(xpath = "//li[text()='Reguler']")
     private WebElement regulerFdm;
@@ -23,7 +24,7 @@ public class dataMerchantPage extends AbstractPage {
     @FindBy(xpath = "//li[text()='SSDI']")
     private WebElement ssdiFdm;
 
-    @FindBy(css = "[title='Pilih Kategori Usaha']")
+    @FindBy(xpath = "//*[@id='select2-category_merchant-container']")
     private WebElement pilihKategoriUsahaDropdown;
     @FindBy(xpath = "//li[text()='Badan Usaha']")
     private WebElement kategoriBadanUsaha;
@@ -41,7 +42,7 @@ public class dataMerchantPage extends AbstractPage {
     @FindBy(xpath = "//input[@id='alamat_korespondensi']")
     private WebElement alamatKorespondensiField;
 
-    @FindBy(css = "[title='Pilih Provinsi korespondensi']")
+    @FindBy(xpath = "//*[@id='select2-province_korespondensi-container']")
     private WebElement provinsiKorespondensiDropdown;
     @FindBy(xpath = "//li[text()='JAWA BARAT']")
     private WebElement jawaBarat;
@@ -58,17 +59,26 @@ public class dataMerchantPage extends AbstractPage {
     @FindBy(xpath = "//li[text()='Antapani Tengah']")
     private WebElement antapaniTengah;
 
+    @FindBy(xpath = "//*[@id='select2-province_korespondensi-container']")
+    private WebElement provinsiKorespondensiDropdownEdit;
+    @FindBy(xpath = "//*[@id='select2-city_korespondensi-container']")
+    private WebElement kotaKorespondensiDropdownEdit;
+    @FindBy(xpath = "//*[@id='select2-district_korespondensi-container']")
+    private WebElement kecamatanKorespondensiDropdownEdit;
+    @FindBy(xpath = "//*[@id='select2-village_korespondensi-container']")
+    private WebElement kelurahanKorespondensiDropdownEdit;
+
     @FindBy(xpath = "//input[@id='postal_code_korespondensi']")
     private WebElement kodePosField;
     @FindBy(xpath = "//input[@id='city_pten_list']")
     private WebElement cityPtenField;
 
-    @FindBy(css = "[title='Indonesia']")
+    @FindBy(xpath = "//*[@id='select2-country-container']")
     private WebElement countryDropdown;
     @FindBy(xpath = "//li[text()='Indonesia']")
     private WebElement indonesia;
 
-    @FindBy(css = "[title='Pilih MCC']")
+    @FindBy(xpath = "//*[@id='select2-mcc_id-container']")
     private WebElement MCCDropdown;
     @FindBy(xpath = "//li[text()='4457 - BOAT RENTALS & LEASES']")
     private WebElement boatRental;
@@ -76,7 +86,7 @@ public class dataMerchantPage extends AbstractPage {
     @FindBy(xpath = "//input[@id='omset']")
     private WebElement omsetField;
 
-    @FindBy(xpath = "//*[@id=\"select2-trx_type-container\"]")
+    @FindBy(xpath = "//*[@id='select2-trx_type-container']")
     private WebElement pilihKategoriMerchantDropdown;
     @FindBy(xpath = "//li[text()='(Usaha Mikro) UMI']")
     private WebElement usahaMikro;
@@ -210,5 +220,65 @@ public class dataMerchantPage extends AbstractPage {
 
     public void selanjutnya() {
         selanjutnyaBtn.click();
+    }
+
+    public void assertSumberFDM(String expectedSumberFDM, SoftAssert softAssert) {
+        softAssert.assertEquals(sumberFdmDropDown.getText(), expectedSumberFDM);
+    }
+
+    public void assertKategoriUsaha(String expectedKategoriUsaha, SoftAssert softAssert) {
+        softAssert.assertEquals(pilihKategoriUsahaDropdown.getText(), expectedKategoriUsaha);
+    }
+
+    public void assertNamaMerchant(String expectedNamaMerchant, SoftAssert softAssert) {
+        softAssert.assertEquals(namaMerchantField.getAttribute("value"), expectedNamaMerchant);
+    }
+
+    public void assertNamaPerusahaan(String expectedNamaPerusahaan, SoftAssert softAssert) {
+        softAssert.assertEquals(namaPerusahaanField.getAttribute("value"), expectedNamaPerusahaan);
+    }
+
+    public void assertAlamatKorespondensi(String expectedAlamat, SoftAssert softAssert) {
+        softAssert.assertEquals(alamatKorespondensiField.getAttribute("value"), expectedAlamat);
+    }
+
+    public void assertProvinsiKorespondensi(String expectedProvinsi, SoftAssert softAssert) {
+        softAssert.assertEquals(provinsiKorespondensiDropdownEdit.getText(), expectedProvinsi);
+    }
+
+    public void assertKotaKorespondensi(String expectedKota, SoftAssert softAssert) {
+        softAssert.assertEquals(kotaKorespondensiDropdownEdit.getText(), expectedKota);
+    }
+
+    public void assertKecamatanKorespondensi(String expectedKecamatan, SoftAssert softAssert) {
+        softAssert.assertEquals(kecamatanKorespondensiDropdownEdit.getText(), expectedKecamatan);
+    }
+
+    public void assertKelurahanKorespondensi(String expectedKelurahan, SoftAssert softAssert) {
+        softAssert.assertEquals(kelurahanKorespondensiDropdownEdit.getText(), expectedKelurahan);
+    }
+
+    public void assertKodePos(String expectedKodePos, SoftAssert softAssert) {
+        softAssert.assertEquals(kodePosField.getAttribute("value"), expectedKodePos);
+    }
+
+    public void assertCityPTEN(String expectedCity, SoftAssert softAssert) {
+        softAssert.assertEquals(cityPtenField.getAttribute("value"), expectedCity);
+    }
+
+    public void assertCountry(String expectedCountry, SoftAssert softAssert) {
+        softAssert.assertEquals(countryDropdown.getText(), expectedCountry);
+    }
+
+    public void assertMCC(String expectedMCC, SoftAssert softAssert) {
+        softAssert.assertEquals(MCCDropdown.getText(), expectedMCC);
+    }
+
+    public void assertOmset(String expectedOmset, SoftAssert softAssert) {
+        softAssert.assertEquals(omsetField.getAttribute("value"), expectedOmset);
+    }
+
+    public void assertKategoriMerchant(String expectedKategoriMerchant, SoftAssert softAssert) {
+        softAssert.assertEquals(pilihKategoriMerchantDropdown.getText(), expectedKategoriMerchant);
     }
 }

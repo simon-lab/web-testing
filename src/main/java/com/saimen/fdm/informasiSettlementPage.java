@@ -1,12 +1,15 @@
 package com.saimen.fdm;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import com.saimen.AbstractPage;
 
@@ -30,7 +33,7 @@ public class informasiSettlementPage extends AbstractPage {
     @FindBy(xpath = "//li[text()='E-Money']")
     private WebElement eMoney;
 
-    @FindBy(css = "[title='Pilih Bank']")
+    @FindBy(xpath = "//*[@id=\"select2-bankname-container\"]")
     private WebElement pilihBankDropdown;
     @FindBy(xpath = "(//input[@type='search'])[6]")
     private WebElement cariBank;
@@ -136,5 +139,48 @@ public class informasiSettlementPage extends AbstractPage {
 
     public void selanjutnya() {
         selanjutnyaBtn.click();
+    }
+
+    public void assertPicName(String expectedPicName, SoftAssert softAssert) {
+        softAssert.assertEquals(picNameField.getAttribute("value"), expectedPicName, "PIC Name tidak sesuai");
+    }
+
+    public void assertPhoneNumber(String expectedPhoneNumber, SoftAssert softAssert) {
+        softAssert.assertEquals(phoneNumberField.getAttribute("value"), expectedPhoneNumber,
+                "Nomor telepon tidak sesuai");
+    }
+
+    public void assertEmail(String expectedEmail, SoftAssert softAssert) {
+        softAssert.assertEquals(emailField.getAttribute("value"), expectedEmail, "Email tidak sesuai");
+    }
+
+    public void assertSupportCard(List<String> expectedSupportCards, SoftAssert softAssert) {
+
+        List<WebElement> supportCardList = driver
+                .findElements(By.xpath("//*[@id=\"step2\"]/div[2]/div[4]/div/span/span[1]/span/ul/li"));
+        List<String> actualCards = supportCardList.stream()
+                .map(WebElement::getText)
+                .map(text -> text.replaceAll("[^\\p{L}\\p{N}\\s]", "").trim())
+                .filter(text -> !text.isEmpty())
+                .collect(Collectors.toList());
+
+        softAssert.assertEquals(actualCards, expectedSupportCards, "Support card tidak sesuai");
+    }
+
+    public void assertPilihBank(String expectedBank, SoftAssert softAssert) {
+        softAssert.assertEquals(pilihBankDropdown.getText().trim(), expectedBank, "Bank yang dipilih tidak sesuai");
+    }
+
+    public void assertNoRekening(String expectedNoRekening, SoftAssert softAssert) {
+        softAssert.assertEquals(noRekeningField.getAttribute("value"), expectedNoRekening, "No Rekening tidak sesuai");
+    }
+
+    public void assertNamaPemilikRekening(String expectedNamaPemilik, SoftAssert softAssert) {
+        softAssert.assertEquals(namaPemilikRekening.getAttribute("value"), expectedNamaPemilik,
+                "Nama pemilik rekening tidak sesuai");
+    }
+
+    public void assertKCKCP(String expectedKCKCP, SoftAssert softAssert) {
+        softAssert.assertEquals(kcKcpField.getAttribute("value"), expectedKCKCP, "KC/KCP tidak sesuai");
     }
 }

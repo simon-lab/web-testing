@@ -88,6 +88,13 @@ public class analystPage extends AbstractPage {
     @FindBy(xpath = "//button[@class='btn btn-success']")
     private WebElement requestApproveBtn;
 
+    @FindBy(xpath = "//input[@class='swal2-input']")
+    private WebElement revisionField;
+    @FindBy(xpath = "//button[@class='swal2-confirm swal2-styled']")
+    private WebElement sendItBtn;
+    @FindBy(xpath = "//button[@class='swal2-cancel swal2-styled")
+    private WebElement cancelBtn;
+
     public analystPage(WebDriver driver) {
         super(driver);
 
@@ -179,8 +186,6 @@ public class analystPage extends AbstractPage {
                     .visibilityOfAllElements(optionList));
 
             WebElement option = currentOptions.get(i);
-            String optionText = option.getText();
-            System.out.println("Memilih opsi: " + optionText);
 
             option.click();
 
@@ -204,8 +209,6 @@ public class analystPage extends AbstractPage {
                     .visibilityOfAllElements(optionList));
 
             WebElement option = currentOptions.get(i);
-            String optionText = option.getText();
-            System.out.println("Memilih opsi: " + optionText);
 
             String txt = option.getText();
             option.click();
@@ -253,8 +256,6 @@ public class analystPage extends AbstractPage {
                     .visibilityOfAllElements(optionList));
 
             WebElement option = currentOptions.get(i);
-            String optionText = option.getText();
-            System.out.println("Memilih opsi: " + optionText);
 
             String txt = option.getText();
             option.click();
@@ -291,8 +292,6 @@ public class analystPage extends AbstractPage {
                     .visibilityOfAllElements(optionList));
 
             WebElement option = currentOptions.get(i);
-            String optionText = option.getText();
-            System.out.println("Memilih opsi: " + optionText);
 
             String txt = option.getText();
             option.click();
@@ -345,8 +344,6 @@ public class analystPage extends AbstractPage {
                     .visibilityOfAllElements(optionList));
 
             WebElement option = currentOptions.get(i);
-            String optionText = option.getText();
-            System.out.println("Memilih opsi: " + optionText);
 
             String txt = option.getText();
             option.click();
@@ -413,8 +410,6 @@ public class analystPage extends AbstractPage {
                     .visibilityOfAllElements(optionList));
 
             WebElement option = currentOptions.get(i);
-            String optionText = option.getText();
-            System.out.println("Memilih opsi: " + optionText);
 
             String txt = option.getText();
             option.click();
@@ -596,6 +591,42 @@ public class analystPage extends AbstractPage {
     public void terdapatDTTOT() {
 
         DTTOTBtn.click();
+
+    }
+
+    public void requestApproceClick() {
+
+        requestApproveBtn.click();
+
+    }
+
+    public void rejectedClick() {
+
+        rejectBtn.click();
+
+    }
+
+    public void revisionClick() {
+
+        revisionBtn.click();
+
+    }
+
+    public void sendItBtn() {
+
+        sendItBtn.click();
+
+    }
+
+    public void CancelBtn() {
+
+        cancelBtn.click();
+
+    }
+
+    public void isiRevisi(String revisi) {
+
+        revisionField.sendKeys(revisi);
 
     }
 }

@@ -1,12 +1,15 @@
 package com.saimen.fdm;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import com.saimen.AbstractPage;
 
@@ -21,7 +24,7 @@ public class informasiLayananPage extends AbstractPage {
     @FindBy(xpath = "//input[@id='email']")
     private WebElement emailField;
 
-    @FindBy(css = "[title='Pilih Jenis Usaha FDM']")
+    @FindBy(xpath = "//*[@id=\"select2-ju_fdm-container\"]")
     private WebElement jenisUsahaDropdown;
     @FindBy(xpath = "//li[text()='SINGLE']")
     private WebElement singleBtn;
@@ -43,7 +46,7 @@ public class informasiLayananPage extends AbstractPage {
     @FindBy(xpath = "//li[text()='QRIS Statis']")
     private WebElement qrStatisLayanan;
 
-    @FindBy(css = "[title='Pilih Tipe Kiosk']")
+    @FindBy(xpath = "//*[@id=\"select2-tp_kiosk-container\"]")
     private WebElement tipeKioskDropdown;
     @FindBy(xpath = "//li[text()='Regular']")
     private WebElement regularBtn;
@@ -310,5 +313,100 @@ public class informasiLayananPage extends AbstractPage {
 
     public void selanjutnya() {
         selanjutnyaBtn.click();
+    }
+
+    public void assertNamaPICUsaha(String expectedNamaPIC, SoftAssert softAssert) {
+        softAssert.assertEquals(picNameField.getAttribute("value"), expectedNamaPIC);
+    }
+
+    public void assertNoTelpPICUsaha(String expectedPhone, SoftAssert softAssert) {
+        softAssert.assertEquals(phoneNumberField.getAttribute("value"), expectedPhone);
+    }
+
+    public void assertEmailPICUsaha(String expectedEmail, SoftAssert softAssert) {
+        softAssert.assertEquals(emailField.getAttribute("value"), expectedEmail);
+    }
+
+    public void assertJenisUsaha(String expectedJenisUsaha, SoftAssert softAssert) {
+        softAssert.assertEquals(jenisUsahaDropdown.getText(), expectedJenisUsaha);
+    }
+
+    public void assertJenisLayanan(List<String> expectedJenisLayanan, SoftAssert softAssert) {
+        List<WebElement> jenisLayananList = driver
+                .findElements(By.xpath("//*[@id='step1']/div[2]/div[5]/span/span[1]/span/ul/li"));
+
+        List<String> actualList = jenisLayananList.stream()
+                .map(WebElement::getText).map(text -> text.replaceAll("[^\\p{L}\\p{N}\\s]", "").trim())
+                .filter(text -> !text.isEmpty())
+                .collect(Collectors.toList());
+
+        System.out.println("Ini actual Jenis Layanan List: " + actualList);
+        System.out.println("Ini Expected Jenis Layanan List: " + expectedJenisLayanan);
+
+        softAssert.assertEquals(actualList, expectedJenisLayanan, "Isi Jenis Layanan tidak sesuai.");
+    }
+
+    public void assertTipeKiosk(String expectedTipeKiosk, SoftAssert softAssert) {
+        softAssert.assertEquals(tipeKioskDropdown.getText(), expectedTipeKiosk);
+    }
+
+    public void assertOrderType(List<String> expectedOrderType, SoftAssert softAssert) {
+        List<WebElement> orderTypeList = driver
+                .findElements(By.xpath("//*[@id=\"step1\"]/div[2]/div[7]/span/span[1]/span/ul/li"));
+
+        List<String> actualList = orderTypeList.stream()
+                .map(WebElement::getText).map(text -> text.replaceAll("[^\\p{L}\\p{N}\\s]", "").trim())
+                .filter(text -> !text.isEmpty())
+                .collect(Collectors.toList());
+
+        softAssert.assertEquals(actualList, expectedOrderType, "Isi Tipe Order tidak sesuai.");
+    }
+
+    public void assertPPN(String expectedPPN, SoftAssert softAssert) {
+        softAssert.assertEquals(ppnField.getAttribute("value"), expectedPPN);
+    }
+
+    public void assertServiceCharge(String expectedServiceCharge, SoftAssert softAssert) {
+        softAssert.assertEquals(serviceChargeField.getAttribute("value"), expectedServiceCharge);
+    }
+
+    public void assertAdminFee(String expectedAdminFee, SoftAssert softAssert) {
+        softAssert.assertEquals(adminFeeField.getAttribute("value"), expectedAdminFee);
+    }
+
+    public void assertMetodePembayaran(List<String> expectedMetodePembayaran, SoftAssert softAssert) {
+        List<WebElement> metodePembayaranList = driver
+                .findElements(By.xpath("//*[@id=\"step1\"]/div[2]/div[7]/span/span[1]/span/ul/li"));
+
+        List<String> actualList = metodePembayaranList.stream()
+                .map(WebElement::getText).map(text -> text.replaceAll("[^\\p{L}\\p{N}\\s]", "").trim())
+                .filter(text -> !text.isEmpty())
+                .collect(Collectors.toList());
+
+        softAssert.assertEquals(actualList, expectedMetodePembayaran, "Isi Tipe Order tidak sesuai.");
+    }
+
+    public void assertOnline(String expectedOnline, SoftAssert softAssert) {
+        softAssert.assertEquals(layananDaringField.getAttribute("value"), expectedOnline);
+    }
+
+    public void assertOffline(String expectedOffline, SoftAssert softAssert) {
+        softAssert.assertEquals(layananLuringField.getAttribute("value"), expectedOffline);
+    }
+
+    public void assertJumlahEDC(String expectedJumlahEDC, SoftAssert softAssert) {
+        softAssert.assertEquals(jumlahEdcField.getAttribute("value"), expectedJumlahEDC);
+    }
+
+    public void assertJenisKartu(List<String> expectedJenisKartu, SoftAssert softAssert) {
+        List<WebElement> jenisKartuList = driver
+                .findElements(By.xpath("//*[@id=\"step1\"]/div[2]/div[15]/div/span/span[1]/span/ul/li"));
+
+        List<String> actualList = jenisKartuList.stream()
+                .map(WebElement::getText).map(text -> text.replaceAll("[^\\p{L}\\p{N}\\s]", "").trim())
+                .filter(text -> !text.isEmpty())
+                .collect(Collectors.toList());
+
+        softAssert.assertEquals(actualList, expectedJenisKartu, "Isi Tipe Order tidak sesuai.");
     }
 }

@@ -15,8 +15,14 @@ import com.saimen.AbstractPage;
 public class fdmPage extends AbstractPage {
     @FindBy(xpath = "//h4[.='List MOS']")
     private WebElement validator;
-    @FindBy(xpath = "//*[@id='mosList']/tbody/tr/td[1]")
+
+    @FindBy(xpath = "//a[@data-toggle='modal']")
     private WebElement listValidator;
+
+    @FindBy(xpath = "/html/body/div/aside[1]/div/div[4]/div/div/div[2]/div/div[1]/a")
+    private WebElement apprvalListBtn;
+    @FindBy(xpath = "//*[@id=\"approval-modal\"]/div/div/div[1]/h4")
+    private WebElement approvalValidator;
 
     @FindBy(xpath = "//a[@href='/mos']")
     private WebElement fdmBtn;
@@ -26,6 +32,8 @@ public class fdmPage extends AbstractPage {
     private WebElement dateBtn;
     @FindBy(xpath = "//select[@id='status']")
     private WebElement statusBtn;
+    @FindBy(xpath = "//*[@id=\"mosList_length\"]/label/select")
+    private WebElement entriesBtn;
     @FindBy(xpath = "//div[@id='mosList_filter']//input[@class='form-control form-control-sm']")
     private WebElement searchFunc;
     @FindBy(xpath = "//table/tbody/tr")
@@ -65,7 +73,7 @@ public class fdmPage extends AbstractPage {
     @Override
     public boolean isAt() {
         this.wait.until(ExpectedConditions.visibilityOf(this.namaMerchant));
-        return this.validator.isDisplayed();
+        return this.namaMerchant.isDisplayed();
     }
 
     public void setStatus(String status) {
@@ -82,11 +90,10 @@ public class fdmPage extends AbstractPage {
         buatMosBtn.click();
     }
 
-    public void analystClick() {
-        analystBtn.click();
-    }
-
     public int cariKolom(String namaMerchant) {
+
+        Select dropdownEntries = new Select(entriesBtn);
+        dropdownEntries.selectByValue("100");
 
         List<WebElement> rows = wait.until(ExpectedConditions.visibilityOfAllElements(rowList));
 
@@ -108,7 +115,7 @@ public class fdmPage extends AbstractPage {
 
     public void assertData(String expectedNamaMerchant, String expectedNamaPerusahaan, String expectedPemilikMerchant,
             String expectedTglDaftar, String expectedStatus, int kolomBerapa, String unikString) {
-
+        this.wait.until(ExpectedConditions.visibilityOf(this.validator));
         this.wait.until(ExpectedConditions.visibilityOf(this.namaMerchant));
 
         Assert.assertEquals(driver.findElement(By.xpath("//table/tbody/tr[" + kolomBerapa + "]/td[2]")).getText(),
@@ -122,17 +129,18 @@ public class fdmPage extends AbstractPage {
                 expectedTglDaftar);
         Assert.assertEquals(driver.findElement(By.xpath("//table/tbody/tr[" + kolomBerapa + "]/td[6]/span")).getText(),
                 expectedStatus);
-        // Assert.assertEquals(namaPerusahaan.getText(), expectedNamaPerusahaan);
-        // Assert.assertEquals(pemilikMerchant.getText(), expectedPemilikMerchant);
-        // Assert.assertEquals(tglDaftar.getText(), expectedTglDaftar);
-    }
-
-    public void editClick() {
-        editBtn.click();
     }
 
     public void detailClick(int kolomBerapa) {
         driver.findElement(By.xpath("(//button[@class='btn btn-secondary btn-xs'])[" + kolomBerapa + "]")).click();
+    }
+
+    public void analystClick(int kolomBerapa) {
+        driver.findElement(By.xpath("//table/tbody/tr[" + kolomBerapa + "]/td[7]/div[1]/button[2]")).click();
+    }
+
+    public void editClick(int kolomBerapa) {
+        driver.findElement(By.xpath("//table/tbody/tr[" + kolomBerapa + "]/td[7]/div[1]/button[1]")).click();
     }
 
     public void deleteClick() {

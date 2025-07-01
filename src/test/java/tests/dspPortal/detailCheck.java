@@ -1,6 +1,5 @@
 package tests.dspPortal;
 
-import org.openqa.selenium.WebDriver;
 import org.testng.asserts.SoftAssert;
 
 import com.saimen.fdm.fdmDetailPage;
@@ -8,14 +7,14 @@ import com.saimen.fdm.fdmDetailPage;
 import tests.dspPortal.model.FDMTestData;
 
 public class detailCheck {
-    public static void detailAssert(WebDriver driver, FDMTestData testData, fdmDetailPage detail,
-            SoftAssert softAssert) {
+    public static void detailAssert(FDMTestData testData, fdmDetailPage detail,
+            SoftAssert softAssert, String uniqString) {
 
         try {
             detail.assertSumberFDM(testData.sumberFDM(), softAssert);
             detail.assertKategoriMerchant(testData.kategoriMerchant(), softAssert);
-            detail.assertNamaMerchant(testData.namaMerchant(), softAssert);
-            // detail.assertNamaPerusahaan(testData.namaPerusahaan(), softAssert); CAPSLOCK
+            detail.assertNamaMerchant(testData.namaMerchant(), softAssert, uniqString);
+            detail.assertNamaPerusahaan(testData.namaPerusahaan(), softAssert, uniqString);
             detail.assertAlamatKorespondensi(testData.alamatKorespondensi(), softAssert);
             detail.assertProvinsiKorespondensi("JAWA BARAT", softAssert);
             detail.assertKotaKorespondensi("KOTA BANDUNG", softAssert);
@@ -27,7 +26,7 @@ public class detailCheck {
             detail.assertMcc("BOAT RENTALS & LEASES", softAssert);
             detail.assertOmset(testData.omset(), softAssert);
             detail.assertKategoriUsaha(testData.kategoriUsaha(), softAssert);
-            detail.assertNamaPICUsaha(testData.namaPICUsaha(), softAssert);
+            detail.assertNamaPICUsaha(testData.namaPICUsaha(), softAssert, uniqString);
             detail.assertNoTelpPICUsaha(testData.noTelpLayanan(), softAssert);
             detail.assertEmailPICUsaha(testData.emailLayanan(), softAssert);
             detail.assertJenisUsahaFDM(testData.jenisUsaha(), softAssert);
@@ -51,7 +50,7 @@ public class detailCheck {
             detail.assertNoRekening(testData.noRekening(), softAssert);
             detail.assertNamaPemilikRekening(testData.namaPemilikRekening(), softAssert);
             detail.assertKcKcp(testData.kcKcp(), softAssert);
-            detail.assertNamaPemilikUsaha(testData.namaPemilikUsaha(), softAssert);
+            detail.assertNamaPemilikUsaha(testData.namaPemilikUsaha(), softAssert, uniqString);
             detail.assertPekerjaan(testData.pekerjaan(), softAssert);
             detail.assertJenisIdentitas(testData.jenisIdentitas(), softAssert);
             detail.assertNoIdentitas(testData.noIdentitasKTP(), softAssert);
