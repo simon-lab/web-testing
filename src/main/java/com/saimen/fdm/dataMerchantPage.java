@@ -25,7 +25,7 @@ public class dataMerchantPage extends AbstractPage {
     private WebElement ssdiFdm;
 
     @FindBy(xpath = "//*[@id='select2-category_merchant-container']")
-    private WebElement pilihKategoriUsahaDropdown;
+    private WebElement pilihJenisUsaha;
     @FindBy(xpath = "//li[text()='Badan Usaha']")
     private WebElement kategoriBadanUsaha;
     @FindBy(xpath = "//li[text()='Perseorangan']")
@@ -87,7 +87,7 @@ public class dataMerchantPage extends AbstractPage {
     private WebElement omsetField;
 
     @FindBy(xpath = "//*[@id='select2-trx_type-container']")
-    private WebElement pilihKategoriMerchantDropdown;
+    private WebElement pilihTipeUsaha;
     @FindBy(xpath = "//li[text()='(Usaha Mikro) UMI']")
     private WebElement usahaMikro;
     @FindBy(xpath = "//li[text()='(Usaha Kecil) UKE']")
@@ -133,16 +133,16 @@ public class dataMerchantPage extends AbstractPage {
 
     }
 
-    public void pilihKategoriUsaha(String kategoriMerchant) {
-        pilihKategoriUsahaDropdown.click();
+    public void pilihJenisUsaha(String jenisUsaha) {
+        pilihJenisUsaha.click();
 
-        if ("badan usaha".equalsIgnoreCase(kategoriMerchant)) {
+        if ("badan usaha".equalsIgnoreCase(jenisUsaha)) {
             kategoriBadanUsaha.click();
-        } else if ("perseorangan".equalsIgnoreCase(kategoriMerchant)) {
+        } else if ("perseorangan".equalsIgnoreCase(jenisUsaha)) {
             kategoriPerseorangan.click();
-        } else if ("charity".equalsIgnoreCase(kategoriMerchant)) {
+        } else if ("charity".equalsIgnoreCase(jenisUsaha)) {
             kategoriCharity.click();
-        } else if ("pendidikan".equalsIgnoreCase(kategoriMerchant)) {
+        } else if ("pendidikan".equalsIgnoreCase(jenisUsaha)) {
             kategoriPendidikan.click();
         } else {
             Assert.fail("Kategori Merchant Tidak Ada");
@@ -198,15 +198,15 @@ public class dataMerchantPage extends AbstractPage {
         omsetField.sendKeys(omset);
     }
 
-    public void pilihKategoriMerchant(String kategoriUsaha) {
-        pilihKategoriMerchantDropdown.click();
-        if ("umi".equalsIgnoreCase(kategoriUsaha)) {
+    public void pilihTipeUsaha(String tipeUsaha) {
+        pilihTipeUsaha.click();
+        if ("umi".equalsIgnoreCase(tipeUsaha)) {
             usahaMikro.click();
-        } else if ("uke".equalsIgnoreCase(kategoriUsaha)) {
+        } else if ("uke".equalsIgnoreCase(tipeUsaha)) {
             usahaKecil.click();
-        } else if ("ume".equalsIgnoreCase(kategoriUsaha)) {
+        } else if ("ume".equalsIgnoreCase(tipeUsaha)) {
             usahaMenengah.click();
-        } else if ("ube".equalsIgnoreCase(kategoriUsaha)) {
+        } else if ("ube".equalsIgnoreCase(tipeUsaha)) {
             usahaBesar.click();
         } else {
             Assert.fail("Kategori Merchant Tidak Ada");
@@ -226,8 +226,8 @@ public class dataMerchantPage extends AbstractPage {
         softAssert.assertEquals(sumberFdmDropDown.getText(), expectedSumberFDM);
     }
 
-    public void assertKategoriUsaha(String expectedKategoriUsaha, SoftAssert softAssert) {
-        softAssert.assertEquals(pilihKategoriUsahaDropdown.getText(), expectedKategoriUsaha);
+    public void assertKategoriUsaha(String expectedJenisUsaha, SoftAssert softAssert) {
+        softAssert.assertEquals(pilihJenisUsaha.getText(), expectedJenisUsaha);
     }
 
     public void assertNamaMerchant(String expectedNamaMerchant, SoftAssert softAssert) {
@@ -278,7 +278,7 @@ public class dataMerchantPage extends AbstractPage {
         softAssert.assertEquals(omsetField.getAttribute("value"), expectedOmset);
     }
 
-    public void assertKategoriMerchant(String expectedKategoriMerchant, SoftAssert softAssert) {
-        softAssert.assertEquals(pilihKategoriMerchantDropdown.getText(), expectedKategoriMerchant);
+    public void assertTipeUsaha(String expectedTipeUsaha, SoftAssert softAssert) {
+        softAssert.assertEquals(pilihTipeUsaha.getText(), expectedTipeUsaha);
     }
 }

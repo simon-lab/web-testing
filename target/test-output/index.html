@@ -92,7 +92,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">11 methods,   11 passed</span>
+                    <span class="method-stats">12 methods,   12 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -119,6 +119,11 @@
                       <span>
                         <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Web_Testing" title="tests.dspPortal.dspPortalTest" class="method navigator-link" hash-for-method="assertScoringPageDataAndOption">assertScoringPageDataAndOption</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Web_Testing" title="tests.dspPortal.dspPortalTest" class="method navigator-link" hash-for-method="checkingCMS">checkingCMS</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
@@ -200,6 +205,13 @@
                   <a name="assertScoringPageDataAndOption">
                   </a> <!-- assertScoringPageDataAndOption -->
                   <span class="method-name">assertScoringPageDataAndOption</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkingCMS">
+                  </a> <!-- checkingCMS -->
+                  <span class="method-name">checkingCMS</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
@@ -306,56 +318,60 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(11);
+data.addRows(12);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'assertScoringPageDataAndOption')
 data.setCell(0, 2, 'tests.dspPortal.dspPortalTest')
-data.setCell(0, 3, 32042);
+data.setCell(0, 3, 39054);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'normalApproving')
 data.setCell(1, 2, 'tests.dspPortal.dspPortalTest')
-data.setCell(1, 3, 24675);
+data.setCell(1, 3, 24326);
 data.setCell(2, 0, 2)
 data.setCell(2, 1, 'normalUsaha')
 data.setCell(2, 2, 'tests.dspPortal.dspPortalTest')
-data.setCell(2, 3, 14560);
+data.setCell(2, 3, 15098);
 data.setCell(3, 0, 3)
-data.setCell(3, 1, 'assertEditPage')
+data.setCell(3, 1, 'normalScoring')
 data.setCell(3, 2, 'tests.dspPortal.dspPortalTest')
-data.setCell(3, 3, 10482);
+data.setCell(3, 3, 13014);
 data.setCell(4, 0, 4)
-data.setCell(4, 1, 'assertDetailAfterBuatMOS')
+data.setCell(4, 1, 'checkingCMS')
 data.setCell(4, 2, 'tests.dspPortal.dspPortalTest')
-data.setCell(4, 3, 5840);
+data.setCell(4, 3, 10761);
 data.setCell(5, 0, 5)
-data.setCell(5, 1, 'normalScoring')
+data.setCell(5, 1, 'assertEditPage')
 data.setCell(5, 2, 'tests.dspPortal.dspPortalTest')
-data.setCell(5, 3, 4821);
+data.setCell(5, 3, 10532);
 data.setCell(6, 0, 6)
-data.setCell(6, 1, 'assertDetailAfterApproval')
+data.setCell(6, 1, 'assertDetailAfterBuatMOS')
 data.setCell(6, 2, 'tests.dspPortal.dspPortalTest')
-data.setCell(6, 3, 3454);
+data.setCell(6, 3, 5519);
 data.setCell(7, 0, 7)
 data.setCell(7, 1, 'normalFdmPage')
 data.setCell(7, 2, 'tests.dspPortal.dspPortalTest')
-data.setCell(7, 3, 2747);
+data.setCell(7, 3, 4591);
 data.setCell(8, 0, 8)
-data.setCell(8, 1, 'normalLayananPage')
+data.setCell(8, 1, 'assertDetailAfterApproval')
 data.setCell(8, 2, 'tests.dspPortal.dspPortalTest')
-data.setCell(8, 3, 1494);
+data.setCell(8, 3, 3526);
 data.setCell(9, 0, 9)
-data.setCell(9, 1, 'normalSettlement')
+data.setCell(9, 1, 'normalLayananPage')
 data.setCell(9, 2, 'tests.dspPortal.dspPortalTest')
-data.setCell(9, 3, 627);
+data.setCell(9, 3, 1464);
 data.setCell(10, 0, 10)
-data.setCell(10, 1, 'normalLoginDeptHead')
+data.setCell(10, 1, 'normalSettlement')
 data.setCell(10, 2, 'tests.dspPortal.dspPortalTest')
-data.setCell(10, 3, 199);
+data.setCell(10, 3, 713);
+data.setCell(11, 0, 11)
+data.setCell(11, 1, 'normalLoginDeptHead')
+data.setCell(11, 2, 'tests.dspPortal.dspPortalTest')
+data.setCell(11, 3, 198);
 window.suiteTableData['Web_Testing']= { tableData: data, tableDiv: 'times-div-Web_Testing'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 1 minutes</span>
+              <span class="suite-total-time">Total running time: 2 minutes</span>
               <div id="times-div-Web_Testing">
               </div> <!-- times-div-Web_Testing -->
             </div> <!-- times-div -->
@@ -388,95 +404,103 @@ return data;
               </div> <!-- configuration-class before -->
               <div class="configuration-method before">
                 <span class="method-name">setStatus(public void tests.dspPortal.dspPortalTest.normalFdmPage())</span>
-                <span class="method-start">9264 ms</span>
+                <span class="method-start">20402 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">normalFdmPage</span>
-                <span class="method-start">9322 ms</span>
+                <span class="method-start">20451 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">setStatus(public void tests.dspPortal.dspPortalTest.normalLayananPage())</span>
-                <span class="method-start">12069 ms</span>
+                <span class="method-start">25050 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">normalLayananPage</span>
-                <span class="method-start">12080 ms</span>
+                <span class="method-start">25053 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">setStatus(public void tests.dspPortal.dspPortalTest.normalSettlement())</span>
-                <span class="method-start">13577 ms</span>
+                <span class="method-start">26520 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">normalSettlement</span>
-                <span class="method-start">13578 ms</span>
+                <span class="method-start">26520 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">setStatus(public void tests.dspPortal.dspPortalTest.normalUsaha())</span>
-                <span class="method-start">14207 ms</span>
+                <span class="method-start">27233 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">normalUsaha</span>
-                <span class="method-start">14209 ms</span>
+                <span class="method-start">27233 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">assertDetailAfterBuatMOS</span>
-                <span class="method-start">28769 ms</span>
+                <span class="method-start">42333 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">setStatus(void tests.dspPortal.dspPortalTest.assertDetailAfterBuatMOS())</span>
-                <span class="method-start">28769 ms</span>
+                <span class="method-start">42333 ms</span>
               </div> <!-- configuration-method before -->
               <div class="configuration-method before">
                 <span class="method-name">setStatus(void tests.dspPortal.dspPortalTest.assertEditPage() throws java.lang.InterruptedException)</span>
-                <span class="method-start">34611 ms</span>
+                <span class="method-start">47854 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">assertEditPage</span>
-                <span class="method-start">34613 ms</span>
+                <span class="method-start">47856 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">setStatus(public void tests.dspPortal.dspPortalTest.assertScoringPageDataAndOption())</span>
-                <span class="method-start">45095 ms</span>
+                <span class="method-start">58395 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">assertScoringPageDataAndOption</span>
-                <span class="method-start">45095 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">normalScoring</span>
-                <span class="method-start">77139 ms</span>
+                <span class="method-start">58395 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">setStatus(public void tests.dspPortal.dspPortalTest.normalScoring())</span>
-                <span class="method-start">77139 ms</span>
+                <span class="method-start">97461 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
+                <span class="method-name">normalScoring</span>
+                <span class="method-start">97461 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
                 <span class="method-name">normalLoginDeptHead</span>
-                <span class="method-start">81966 ms</span>
+                <span class="method-start">110481 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">setStatus(public void tests.dspPortal.dspPortalTest.normalLoginDeptHead())</span>
-                <span class="method-start">81966 ms</span>
-              </div> <!-- configuration-method before -->
-              <div class="configuration-method before">
-                <span class="method-name">setStatus(public void tests.dspPortal.dspPortalTest.normalApproving())</span>
-                <span class="method-start">82167 ms</span>
+                <span class="method-start">110481 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">normalApproving</span>
-                <span class="method-start">82169 ms</span>
+                <span class="method-start">110693 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
+                <span class="method-name">setStatus(public void tests.dspPortal.dspPortalTest.normalApproving())</span>
+                <span class="method-start">110693 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="configuration-method before">
                 <span class="method-name">setStatus(void tests.dspPortal.dspPortalTest.assertDetailAfterApproval())</span>
-                <span class="method-start">106844 ms</span>
+                <span class="method-start">135022 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">assertDetailAfterApproval</span>
-                <span class="method-start">106850 ms</span>
+                <span class="method-start">135023 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">setStatus(void tests.dspPortal.dspPortalTest.checkingCMS())</span>
+                <span class="method-start">138554 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">checkingCMS</span>
+                <span class="method-start">138556 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">110306 ms</span>
+                <span class="method-start">149317 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

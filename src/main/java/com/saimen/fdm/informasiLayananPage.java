@@ -25,7 +25,7 @@ public class informasiLayananPage extends AbstractPage {
     private WebElement emailField;
 
     @FindBy(xpath = "//*[@id=\"select2-ju_fdm-container\"]")
-    private WebElement jenisUsahaDropdown;
+    private WebElement jenisKioskDropdown;
     @FindBy(xpath = "//li[text()='SINGLE']")
     private WebElement singleBtn;
     @FindBy(xpath = "//li[text()='MULTI']")
@@ -141,15 +141,15 @@ public class informasiLayananPage extends AbstractPage {
         emailField.sendKeys(email);
     }
 
-    public void pilihJenisUsaha(String jenisUsaha) {
-        jenisUsahaDropdown.click();
+    public void pilihJenisKiosk(String jenisKiosk) {
+        jenisKioskDropdown.click();
         this.wait.until(ExpectedConditions.visibilityOf(this.singleBtn));
 
-        if ("single".equalsIgnoreCase(jenisUsaha)) {
+        if ("single".equalsIgnoreCase(jenisKiosk)) {
             singleBtn.click();
-        } else if ("multi".equalsIgnoreCase(jenisUsaha)) {
+        } else if ("multi".equalsIgnoreCase(jenisKiosk)) {
             multiBtn.click();
-        } else if ("kosong".equalsIgnoreCase(jenisUsaha)) {
+        } else if ("kosong".equalsIgnoreCase(jenisKiosk)) {
             kosongUsahaBtn.click();
         } else {
             Assert.fail("Jenis Usaha Tidak Ada");
@@ -327,8 +327,8 @@ public class informasiLayananPage extends AbstractPage {
         softAssert.assertEquals(emailField.getAttribute("value"), expectedEmail);
     }
 
-    public void assertJenisUsaha(String expectedJenisUsaha, SoftAssert softAssert) {
-        softAssert.assertEquals(jenisUsahaDropdown.getText(), expectedJenisUsaha);
+    public void assertJenisKiosk(String expectedJenisKiosk, SoftAssert softAssert) {
+        softAssert.assertEquals(jenisKioskDropdown.getText(), expectedJenisKiosk);
     }
 
     public void assertJenisLayanan(List<String> expectedJenisLayanan, SoftAssert softAssert) {

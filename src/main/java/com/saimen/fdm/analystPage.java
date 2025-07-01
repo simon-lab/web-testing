@@ -152,20 +152,20 @@ public class analystPage extends AbstractPage {
         Assert.assertEquals(actualProvinsiUsaha, expectedProvinsiUsaha);
     }
 
-    public void assertKategoriUsaha(String expectedKategoriUsaha) {
+    public void assertTipeUsaha(String expectedTipeUsaha) {
 
-        if ("umi".equalsIgnoreCase(expectedKategoriUsaha)) {
-            expectedKategoriUsaha = "Usaha Mikro";
-        } else if ("uke".equalsIgnoreCase(expectedKategoriUsaha)) {
-            expectedKategoriUsaha = "Usaha Kecil";
-        } else if ("ume".equalsIgnoreCase(expectedKategoriUsaha)) {
-            expectedKategoriUsaha = "Usaha Menangah";
-        } else if ("ube".equalsIgnoreCase(expectedKategoriUsaha)) {
-            expectedKategoriUsaha = "Usaha Besar";
+        if ("umi".equalsIgnoreCase(expectedTipeUsaha)) {
+            expectedTipeUsaha = "Usaha Mikro";
+        } else if ("uke".equalsIgnoreCase(expectedTipeUsaha)) {
+            expectedTipeUsaha = "Usaha Kecil";
+        } else if ("ume".equalsIgnoreCase(expectedTipeUsaha)) {
+            expectedTipeUsaha = "Usaha Menangah";
+        } else if ("ube".equalsIgnoreCase(expectedTipeUsaha)) {
+            expectedTipeUsaha = "Usaha Besar";
         }
 
         String actualKategoriUsaha = kategoriUsahaField.getText();
-        Assert.assertEquals(actualKategoriUsaha, expectedKategoriUsaha);
+        Assert.assertEquals(actualKategoriUsaha, expectedTipeUsaha);
     }
 
     public void assertFDMStatus(String expectedFDMStatus) {

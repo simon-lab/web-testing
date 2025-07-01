@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="11" passed="11" failed="0" skipped="0">
+<testng-results ignored="0" total="12" passed="12" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-06-30T16:09:02 WIB" name="Web Testing" finished-at="2025-06-30T16:10:53 WIB" duration-ms="110336">
+  <suite started-at="2025-07-01T15:36:02 WIB" name="Web Testing" finished-at="2025-07-01T15:38:31 WIB" duration-ms="149333">
     <groups>
     </groups>
-    <test started-at="2025-06-30T16:09:02 WIB" name="DSP Portal Test" finished-at="2025-06-30T16:10:53 WIB" duration-ms="110336">
+    <test started-at="2025-07-01T15:36:02 WIB" name="DSP Portal Test" finished-at="2025-07-01T15:38:31 WIB" duration-ms="149333">
       <class name="tests.dspPortal.dspPortalTest">
-        <test-method is-config="true" signature="setEnvironment(java.lang.String)[pri:0, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-06-30T16:09:03 WIB" name="setEnvironment" finished-at="2025-06-30T16:09:12 WIB" duration-ms="9258" status="PASS">
+        <test-method is-config="true" signature="setEnvironment(java.lang.String)[pri:0, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-07-01T15:36:02 WIB" name="setEnvironment" finished-at="2025-07-01T15:36:22 WIB" duration-ms="20391" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -18,7 +18,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setEnvironment -->
-        <test-method is-config="true" signature="setStatus(java.lang.reflect.Method)[pri:0, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-06-30T16:09:12 WIB" name="setStatus" finished-at="2025-06-30T16:09:12 WIB" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="setStatus(java.lang.reflect.Method)[pri:0, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-07-01T15:36:22 WIB" name="setStatus" finished-at="2025-07-01T15:36:22 WIB" duration-ms="2" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -29,11 +29,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setStatus -->
-        <test-method signature="normalFdmPage()[pri:1, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-06-30T16:09:12 WIB" name="normalFdmPage" finished-at="2025-06-30T16:09:15 WIB" duration-ms="2747" status="PASS">
+        <test-method signature="normalFdmPage()[pri:1, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-07-01T15:36:22 WIB" name="normalFdmPage" finished-at="2025-07-01T15:36:27 WIB" duration-ms="4591" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- normalFdmPage -->
-        <test-method is-config="true" signature="setStatus(java.lang.reflect.Method)[pri:0, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-06-30T16:09:15 WIB" name="setStatus" finished-at="2025-06-30T16:09:15 WIB" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="setStatus(java.lang.reflect.Method)[pri:0, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-07-01T15:36:27 WIB" name="setStatus" finished-at="2025-07-01T15:36:27 WIB" duration-ms="3" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -44,11 +44,15 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setStatus -->
-        <test-method signature="normalLayananPage()[pri:3, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-06-30T16:09:15 WIB" name="normalLayananPage" finished-at="2025-06-30T16:09:16 WIB" duration-ms="1494" status="PASS">
+        <test-method signature="normalLayananPage()[pri:3, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-07-01T15:36:27 WIB" name="normalLayananPage" finished-at="2025-07-01T15:36:28 WIB" duration-ms="1464" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- normalLayananPage -->
-        <test-method is-config="true" signature="setStatus(java.lang.reflect.Method)[pri:0, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-06-30T16:09:16 WIB" name="setStatus" finished-at="2025-06-30T16:09:16 WIB" duration-ms="0" status="PASS">
+        <test-method signature="normalSettlement()[pri:5, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-07-01T15:36:28 WIB" name="normalSettlement" finished-at="2025-07-01T15:36:29 WIB" duration-ms="713" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- normalSettlement -->
+        <test-method is-config="true" signature="setStatus(java.lang.reflect.Method)[pri:0, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-07-01T15:36:28 WIB" name="setStatus" finished-at="2025-07-01T15:36:28 WIB" duration-ms="0" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -59,11 +63,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setStatus -->
-        <test-method signature="normalSettlement()[pri:5, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-06-30T16:09:16 WIB" name="normalSettlement" finished-at="2025-06-30T16:09:17 WIB" duration-ms="627" status="PASS">
+        <test-method signature="normalUsaha()[pri:7, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-07-01T15:36:29 WIB" name="normalUsaha" finished-at="2025-07-01T15:36:44 WIB" duration-ms="15098" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- normalSettlement -->
-        <test-method is-config="true" signature="setStatus(java.lang.reflect.Method)[pri:0, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-06-30T16:09:17 WIB" name="setStatus" finished-at="2025-06-30T16:09:17 WIB" duration-ms="1" status="PASS">
+        </test-method> <!-- normalUsaha -->
+        <test-method is-config="true" signature="setStatus(java.lang.reflect.Method)[pri:0, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-07-01T15:36:29 WIB" name="setStatus" finished-at="2025-07-01T15:36:29 WIB" duration-ms="0" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -74,15 +78,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setStatus -->
-        <test-method signature="normalUsaha()[pri:7, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-06-30T16:09:17 WIB" name="normalUsaha" finished-at="2025-06-30T16:09:31 WIB" duration-ms="14560" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- normalUsaha -->
-        <test-method signature="assertDetailAfterBuatMOS()[pri:8, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-06-30T16:09:31 WIB" name="assertDetailAfterBuatMOS" finished-at="2025-06-30T16:09:37 WIB" duration-ms="5840" status="PASS">
+        <test-method signature="assertDetailAfterBuatMOS()[pri:8, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-07-01T15:36:44 WIB" name="assertDetailAfterBuatMOS" finished-at="2025-07-01T15:36:49 WIB" duration-ms="5519" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- assertDetailAfterBuatMOS -->
-        <test-method is-config="true" signature="setStatus(java.lang.reflect.Method)[pri:0, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-06-30T16:09:31 WIB" name="setStatus" finished-at="2025-06-30T16:09:31 WIB" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="setStatus(java.lang.reflect.Method)[pri:0, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-07-01T15:36:44 WIB" name="setStatus" finished-at="2025-07-01T15:36:44 WIB" duration-ms="0" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -93,7 +93,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setStatus -->
-        <test-method is-config="true" signature="setStatus(java.lang.reflect.Method)[pri:0, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-06-30T16:09:37 WIB" name="setStatus" finished-at="2025-06-30T16:09:37 WIB" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="setStatus(java.lang.reflect.Method)[pri:0, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-07-01T15:36:49 WIB" name="setStatus" finished-at="2025-07-01T15:36:49 WIB" duration-ms="1" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -104,15 +104,15 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setStatus -->
-        <test-method signature="assertEditPage()[pri:9, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-06-30T16:09:37 WIB" name="assertEditPage" finished-at="2025-06-30T16:09:48 WIB" duration-ms="10482" status="PASS">
+        <test-method signature="assertEditPage()[pri:9, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-07-01T15:36:49 WIB" name="assertEditPage" finished-at="2025-07-01T15:37:00 WIB" duration-ms="10532" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- assertEditPage -->
-        <test-method signature="assertScoringPageDataAndOption()[pri:10, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-06-30T16:09:48 WIB" name="assertScoringPageDataAndOption" finished-at="2025-06-30T16:10:20 WIB" duration-ms="32042" status="PASS">
+        <test-method signature="assertScoringPageDataAndOption()[pri:10, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-07-01T15:37:00 WIB" name="assertScoringPageDataAndOption" finished-at="2025-07-01T15:37:39 WIB" duration-ms="39054" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- assertScoringPageDataAndOption -->
-        <test-method is-config="true" signature="setStatus(java.lang.reflect.Method)[pri:0, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-06-30T16:09:48 WIB" name="setStatus" finished-at="2025-06-30T16:09:48 WIB" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="setStatus(java.lang.reflect.Method)[pri:0, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-07-01T15:37:00 WIB" name="setStatus" finished-at="2025-07-01T15:37:00 WIB" duration-ms="0" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -123,11 +123,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setStatus -->
-        <test-method signature="normalScoring()[pri:11, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-06-30T16:10:20 WIB" name="normalScoring" finished-at="2025-06-30T16:10:24 WIB" duration-ms="4821" status="PASS">
+        <test-method signature="normalScoring()[pri:11, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-07-01T15:37:39 WIB" name="normalScoring" finished-at="2025-07-01T15:37:52 WIB" duration-ms="13014" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- normalScoring -->
-        <test-method is-config="true" signature="setStatus(java.lang.reflect.Method)[pri:0, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-06-30T16:10:20 WIB" name="setStatus" finished-at="2025-06-30T16:10:20 WIB" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="setStatus(java.lang.reflect.Method)[pri:0, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-07-01T15:37:39 WIB" name="setStatus" finished-at="2025-07-01T15:37:39 WIB" duration-ms="0" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -138,11 +138,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setStatus -->
-        <test-method signature="normalLoginDeptHead()[pri:12, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-06-30T16:10:24 WIB" name="normalLoginDeptHead" finished-at="2025-06-30T16:10:25 WIB" duration-ms="199" status="PASS">
+        <test-method signature="normalLoginDeptHead()[pri:12, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-07-01T15:37:52 WIB" name="normalLoginDeptHead" finished-at="2025-07-01T15:37:52 WIB" duration-ms="198" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- normalLoginDeptHead -->
-        <test-method is-config="true" signature="setStatus(java.lang.reflect.Method)[pri:0, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-06-30T16:10:24 WIB" name="setStatus" finished-at="2025-06-30T16:10:24 WIB" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="setStatus(java.lang.reflect.Method)[pri:0, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-07-01T15:37:52 WIB" name="setStatus" finished-at="2025-07-01T15:37:52 WIB" duration-ms="0" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -153,7 +153,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setStatus -->
-        <test-method is-config="true" signature="setStatus(java.lang.reflect.Method)[pri:0, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-06-30T16:10:25 WIB" name="setStatus" finished-at="2025-06-30T16:10:25 WIB" duration-ms="2" status="PASS">
+        <test-method signature="normalApproving()[pri:13, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-07-01T15:37:52 WIB" name="normalApproving" finished-at="2025-07-01T15:38:17 WIB" duration-ms="24326" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- normalApproving -->
+        <test-method is-config="true" signature="setStatus(java.lang.reflect.Method)[pri:0, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-07-01T15:37:52 WIB" name="setStatus" finished-at="2025-07-01T15:37:52 WIB" duration-ms="0" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -164,11 +168,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setStatus -->
-        <test-method signature="normalApproving()[pri:13, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-06-30T16:10:25 WIB" name="normalApproving" finished-at="2025-06-30T16:10:49 WIB" duration-ms="24675" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- normalApproving -->
-        <test-method is-config="true" signature="setStatus(java.lang.reflect.Method)[pri:0, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-06-30T16:10:49 WIB" name="setStatus" finished-at="2025-06-30T16:10:49 WIB" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="setStatus(java.lang.reflect.Method)[pri:0, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-07-01T15:38:17 WIB" name="setStatus" finished-at="2025-07-01T15:38:17 WIB" duration-ms="0" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -179,11 +179,26 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setStatus -->
-        <test-method signature="assertDetailAfterApproval()[pri:14, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-06-30T16:10:49 WIB" name="assertDetailAfterApproval" finished-at="2025-06-30T16:10:53 WIB" duration-ms="3454" status="PASS">
+        <test-method signature="assertDetailAfterApproval()[pri:14, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-07-01T15:38:17 WIB" name="assertDetailAfterApproval" finished-at="2025-07-01T15:38:20 WIB" duration-ms="3526" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- assertDetailAfterApproval -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-06-30T16:10:53 WIB" name="tearDown" finished-at="2025-06-30T16:10:53 WIB" duration-ms="2" status="PASS">
+        <test-method is-config="true" signature="setStatus(java.lang.reflect.Method)[pri:0, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-07-01T15:38:20 WIB" name="setStatus" finished-at="2025-07-01T15:38:20 WIB" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[void tests.dspPortal.dspPortalTest.checkingCMS()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setStatus -->
+        <test-method signature="checkingCMS()[pri:14, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-07-01T15:38:20 WIB" name="checkingCMS" finished-at="2025-07-01T15:38:31 WIB" duration-ms="10761" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkingCMS -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.dspPortal.dspPortalTest@3ad83a66]" started-at="2025-07-01T15:38:31 WIB" name="tearDown" finished-at="2025-07-01T15:38:31 WIB" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

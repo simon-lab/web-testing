@@ -12,7 +12,7 @@ public class detailCheck {
 
         try {
             detail.assertSumberFDM(testData.sumberFDM(), softAssert);
-            detail.assertKategoriMerchant(testData.kategoriMerchant(), softAssert);
+            detail.assertJenisUsaha(testData.jenisUsaha(), softAssert);
             detail.assertNamaMerchant(testData.namaMerchant(), softAssert, uniqString);
             detail.assertNamaPerusahaan(testData.namaPerusahaan(), softAssert, uniqString);
             detail.assertAlamatKorespondensi(testData.alamatKorespondensi(), softAssert);
@@ -25,11 +25,11 @@ public class detailCheck {
             detail.assertCountry("ID-Indonesia", softAssert);
             detail.assertMcc("BOAT RENTALS & LEASES", softAssert);
             detail.assertOmset(testData.omset(), softAssert);
-            detail.assertKategoriUsaha(testData.kategoriUsaha(), softAssert);
+            detail.assertTipeUsaha(testData.tipeUsaha(), softAssert);
             detail.assertNamaPICUsaha(testData.namaPICUsaha(), softAssert, uniqString);
             detail.assertNoTelpPICUsaha(testData.noTelpLayanan(), softAssert);
             detail.assertEmailPICUsaha(testData.emailLayanan(), softAssert);
-            detail.assertJenisUsahaFDM(testData.jenisUsaha(), softAssert);
+            detail.assertJenisKiosk(testData.jenisKiosk(), softAssert);
             detail.assertJenisLayanan(testData.jenisLayanan(), softAssert);
             detail.assertTipeKiosk(testData.tipeKiosk(), softAssert);
             detail.assertOrderType(testData.tipeOrder(), softAssert);

@@ -20,7 +20,7 @@ public class fdmDetailPage extends AbstractPage {
     @FindBy(xpath = "(//div[@class='w-100'])[1]")
     private WebElement sumberFDM;
     @FindBy(xpath = "(//div[@class='w-100'])[2]")
-    private WebElement kategoriMerchant;
+    private WebElement jenisUsaha;
     @FindBy(xpath = "(//div[@class='w-100'])[3]")
     private WebElement namaMerchant;
     @FindBy(xpath = "(//div[@class='w-100'])[4]")
@@ -46,7 +46,7 @@ public class fdmDetailPage extends AbstractPage {
     @FindBy(xpath = "(//div[@class='w-100'])[14]")
     private WebElement omset;
     @FindBy(xpath = "(//div[@class='w-100'])[15]")
-    private WebElement kategoriUsaha;
+    private WebElement tipeUsaha;
     @FindBy(xpath = "(//div[@class='w-100'])[16]")
     private WebElement namaPICUsaha;
     @FindBy(xpath = "(//div[@class='w-100'])[17]")
@@ -54,7 +54,7 @@ public class fdmDetailPage extends AbstractPage {
     @FindBy(xpath = "(//div[@class='w-100'])[18]")
     private WebElement emailPICUsaha;
     @FindBy(xpath = "(//div[@class='w-100'])[19]")
-    private WebElement jenisUsahaFDM;
+    private WebElement jenisKiosk;
     @FindBy(xpath = "(//div[@class='w-100'])[20]")
     private WebElement jenisLayanan;
     @FindBy(xpath = "(//div[@class='w-100'])[21]")
@@ -147,8 +147,8 @@ public class fdmDetailPage extends AbstractPage {
         softAssert.assertEquals(sumberFDM.getText(), expectedSumberFDM);
     }
 
-    public void assertKategoriMerchant(String expectedKategoriMerchant, SoftAssert softAssert) {
-        softAssert.assertEquals(kategoriMerchant.getText(), expectedKategoriMerchant);
+    public void assertJenisUsaha(String expectedJenisUsaha, SoftAssert softAssert) {
+        softAssert.assertEquals(jenisUsaha.getText(), expectedJenisUsaha);
     }
 
     public void assertNamaMerchant(String expectedNamaMerchant, SoftAssert softAssert, String uniqString) {
@@ -203,21 +203,21 @@ public class fdmDetailPage extends AbstractPage {
         softAssert.assertEquals(omset.getText(), expectedOmset);
     }
 
-    public void assertKategoriUsaha(String expectedKategoriUsaha, SoftAssert softAssert) {
+    public void assertTipeUsaha(String expectedTipeUsaha, SoftAssert softAssert) {
         String expected = null;
-        if ("umi".equalsIgnoreCase(expectedKategoriUsaha)) {
+        if ("umi".equalsIgnoreCase(expectedTipeUsaha)) {
             expected = "Usaha Mikro";
-        } else if ("uki".equalsIgnoreCase(expectedKategoriUsaha)) {
+        } else if ("uki".equalsIgnoreCase(expectedTipeUsaha)) {
             expected = "Usaha Kecil";
-        } else if ("ume".equalsIgnoreCase(expectedKategoriUsaha)) {
+        } else if ("ume".equalsIgnoreCase(expectedTipeUsaha)) {
             expected = "Usaha Menangah";
-        } else if ("ube".equalsIgnoreCase(expectedKategoriUsaha)) {
+        } else if ("ube".equalsIgnoreCase(expectedTipeUsaha)) {
             expected = "Usaha Besar";
         } else {
             Assert.fail("Kategori Merchant Tidak Ada");
         }
 
-        softAssert.assertEquals(kategoriUsaha.getText(), expected);
+        softAssert.assertEquals(tipeUsaha.getText(), expected);
     }
 
     public void assertNamaPICUsaha(String expectedNamaPICUsaha, SoftAssert softAssert, String uniqString) {
@@ -232,8 +232,8 @@ public class fdmDetailPage extends AbstractPage {
         softAssert.assertEquals(emailPICUsaha.getText(), expectedEmailPICUsaha);
     }
 
-    public void assertJenisUsahaFDM(String expectedJenisUsahaFDM, SoftAssert softAssert) {
-        softAssert.assertEquals(jenisUsahaFDM.getText(), expectedJenisUsahaFDM);
+    public void assertJenisKiosk(String expectedJenisKiosk, SoftAssert softAssert) {
+        softAssert.assertEquals(jenisKiosk.getText(), expectedJenisKiosk);
     }
 
     public void assertJenisLayanan(List<String> expectedJenisLayanan, SoftAssert softAssert) {

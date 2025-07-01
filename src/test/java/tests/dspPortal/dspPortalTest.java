@@ -14,6 +14,10 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import com.saimen.fdm.CMSEditMerchantPage;
+import com.saimen.fdm.CMSLoginPage;
+import com.saimen.fdm.CMShomePage;
+import com.saimen.fdm.CMSmerchantPage;
 import com.saimen.fdm.analystPage;
 import com.saimen.fdm.dataMerchantPage;
 import com.saimen.fdm.fdmDetailPage;
@@ -33,11 +37,13 @@ public class dspPortalTest implements ITestListener {
 
     WebDriver driver;
     WebDriver driver2;
+    WebDriver driverCMS;
     int testStatus = 0;
     private FDMTestData testData;
     String dateToday = generatingDateToday.generatingToday();
     SoftAssert softAssert = new SoftAssert();
     SoftAssert softAssert2 = new SoftAssert();
+    SoftAssert softAssertCMS = new SoftAssert();
     loginPage loginPage;
     oprHomePage oprHomePage;
     fdmPage fdmPage;
@@ -57,6 +63,11 @@ public class dspPortalTest implements ITestListener {
     informasiUsahaPage usaha2;
     fdmDetailPage detail2;
     analystPage analystPage2;
+
+    CMSLoginPage cmsLoginPage;
+    CMSEditMerchantPage cmsEditMerchantPage;
+    CMShomePage cmsHomePage;
+    CMSmerchantPage cmsMerchantPage;
 
     String uniqString = generatingString.generateUniqueCode();
     String namaMerchant;
@@ -81,6 +92,9 @@ public class dspPortalTest implements ITestListener {
         driver2 = new ChromeDriver(option);
         driver2.manage().window().minimize();
 
+        driverCMS = new ChromeDriver(option);
+        driverCMS.manage().window().minimize();
+
         driver.get("https://uat.dspportal.local/");
         loginPage = new loginPage(driver);
         oprHomePage = new oprHomePage(driver);
@@ -102,6 +116,12 @@ public class dspPortalTest implements ITestListener {
         detail2 = new fdmDetailPage(driver2);
         fdmPage2 = new fdmPage(driver2);
         analystPage2 = new analystPage(driver2);
+
+        driverCMS.get("https://jpdigi-kioskweb-uat.dspratama.co.id/");
+        cmsLoginPage = new CMSLoginPage(driverCMS);
+        cmsEditMerchantPage = new CMSEditMerchantPage(driverCMS);
+        cmsHomePage = new CMShomePage(driverCMS);
+        cmsMerchantPage = new CMSmerchantPage(driverCMS);
 
         loginPage.isAt();
         loginPage.fillUsername("art");
@@ -152,7 +172,7 @@ public class dspPortalTest implements ITestListener {
 
         dataMerchant.isAt();
         dataMerchant.pilihSumberFDM(testData.sumberFDM());
-        dataMerchant.pilihKategoriUsaha(testData.kategoriMerchant());
+        dataMerchant.pilihJenisUsaha(testData.jenisUsaha());
         dataMerchant.isiNamaMerchant(namaMerchant);
         dataMerchant.isiNamaPerusahaan(namaPerusahaan);
         dataMerchant.isiAlamat(testData.alamatKorespondensi());
@@ -162,7 +182,7 @@ public class dspPortalTest implements ITestListener {
         dataMerchant.pilihCountry();
         dataMerchant.pilihMCC();
         dataMerchant.isiOmset(testData.omset());
-        dataMerchant.pilihKategoriMerchant(testData.kategoriUsaha());
+        dataMerchant.pilihTipeUsaha(testData.tipeUsaha());
         dataMerchant.selanjutnya();
 
         testStatus = 1;
@@ -200,7 +220,7 @@ public class dspPortalTest implements ITestListener {
         layanan.isiPICUsaha(namaPemilikMerchant);
         layanan.isiNoTelp(testData.noTelpLayanan());
         layanan.isiEmail(testData.emailLayanan());
-        layanan.pilihJenisUsaha(testData.jenisUsaha());
+        layanan.pilihJenisKiosk(testData.jenisKiosk());
         layanan.pilihJenisLayanan(testData.jenisLayanan());
         layanan.pilihTipeKiosk(testData.tipeKiosk());
         layanan.pilihTipeOrder(testData.tipeOrder());
@@ -328,7 +348,7 @@ public class dspPortalTest implements ITestListener {
         fdmPage.editClick(kolomTerkait);
         dataMerchant.isAt();
         dataMerchant.assertSumberFDM(testData.sumberFDM(), softAssert);
-        dataMerchant.assertKategoriUsaha(testData.kategoriMerchant() + " " +
+        dataMerchant.assertKategoriUsaha(testData.jenisUsaha() + " " +
                 uniqString, softAssert);
         dataMerchant.assertNamaMerchant(testData.namaMerchant() + " " + uniqString,
                 softAssert);
@@ -345,14 +365,14 @@ public class dspPortalTest implements ITestListener {
         dataMerchant.assertCountry("Indonesia", softAssert);
         dataMerchant.assertMCC("4457 - BOAT RENTALS & LEASES", softAssert);
         dataMerchant.assertOmset(testData.omset(), softAssert);
-        dataMerchant.assertKategoriMerchant(testData.kategoriMerchant(), softAssert);
+        dataMerchant.assertTipeUsaha(testData.tipeUsaha(), softAssert);
         dataMerchant.selanjutnya();
 
         layanan.isAt();
         layanan.assertNamaPICUsaha(testData.namaPICUsaha(), softAssert);
         layanan.assertNoTelpPICUsaha(testData.noTelpLayanan(), softAssert);
         layanan.assertEmailPICUsaha(testData.emailLayanan(), softAssert);
-        layanan.assertJenisUsaha(testData.jenisUsaha(), softAssert);
+        layanan.assertJenisKiosk(testData.jenisKiosk(), softAssert);
         layanan.assertJenisLayanan(testData.jenisLayanan(), softAssert);
         layanan.assertTipeKiosk(testData.tipeKiosk(), softAssert);
         layanan.assertOrderType(testData.tipeOrder(), softAssert);
@@ -415,7 +435,7 @@ public class dspPortalTest implements ITestListener {
         analystPage.assertAlamatUsaha(testData.alamatUsaha());
         analystPage.assertKotaUsaha(testData.kotaUsaha());
         analystPage.assertProvinsiUsaha(testData.provinsiUsaha());
-        analystPage.assertKategoriUsaha(testData.kategoriUsaha());
+        analystPage.assertTipeUsaha(testData.tipeUsaha());
         analystPage.assertJasaRisikoTinggiCheck();
         analystPage.assertIdentitasPenggunaCheck();
         analystPage.assertLokasiUsahaChecked();
@@ -449,8 +469,6 @@ public class dspPortalTest implements ITestListener {
 
     @Test(priority = 12)
     public void normalLoginDeptHead() {
-        ChromeOptions option = new ChromeOptions();
-        option.setAcceptInsecureCerts(true);
 
         driver2.manage().window().maximize();
 
@@ -488,6 +506,40 @@ public class dspPortalTest implements ITestListener {
         System.out.println("Data " + testData.namaMerchant() + " " + uniqString + "Pada page fdm sudah Benar");
 
         testStatus = 1;
+    }
+
+    @Test(priority = 14)
+    void checkingCMS() {
+
+        driverCMS.manage().window().maximize();
+        cmsLoginPage.isAt();
+        cmsLoginPage.fillEmail("admin@mggsoftware.com");
+        cmsLoginPage.fillPassword("123456");
+        cmsLoginPage.logInClick();
+
+        cmsHomePage.isAt();
+        cmsHomePage.merchantClick();
+
+        cmsMerchantPage.isAt();
+        int kolomTerkait = cmsMerchantPage.cariKolom(namaMerchant);
+        cmsMerchantPage.assertDataAndGetMID(namaMerchant, testData.jenisKiosk(), kolomTerkait);
+        cmsMerchantPage.clickEdit(kolomTerkait);
+
+        cmsEditMerchantPage.isAt();
+        cmsEditMerchantPage.assertNamaMerchant(namaMerchant, softAssertCMS);
+        cmsEditMerchantPage.assertAlamat(testData.alamatUsaha(), softAssertCMS);
+        cmsEditMerchantPage.assertNoTelp(testData.noTelpLayanan(), softAssertCMS);
+        cmsEditMerchantPage.assertOwner(testData.namaPemilikUsaha(), softAssertCMS);
+        cmsEditMerchantPage.assertNPWP(testData.noNPWP(), softAssertCMS);
+        cmsEditMerchantPage.assertNamaPIC(testData.namaPICUsaha(), softAssertCMS);
+        cmsEditMerchantPage.assertNoPIC(testData.noTelpLayanan(), softAssertCMS);
+        cmsEditMerchantPage.assertEmailPIC(testData.emailLayanan(), softAssertCMS);
+        cmsEditMerchantPage.assertNIKOwner(testData.noIdentitasKTP(), softAssertCMS);
+        cmsEditMerchantPage.assertAlamatOwner(testData.alamatKTP(), softAssertCMS);
+        cmsEditMerchantPage.assertEmailOwner(testData.emailLayanan(), softAssertCMS);
+        cmsEditMerchantPage.assertNoOwner(testData.noTelpPemilik(), softAssertCMS);
+        // cmsEditMerchantPage.assertPlatform(testData., softAssert);
+        cmsEditMerchantPage.assertOutletType(testData.jenisKiosk(), softAssertCMS);
     }
 
     @AfterClass
