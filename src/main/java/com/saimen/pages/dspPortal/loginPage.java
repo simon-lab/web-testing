@@ -1,4 +1,4 @@
-package com.saimen.fdm;
+package com.saimen.dspPortal;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

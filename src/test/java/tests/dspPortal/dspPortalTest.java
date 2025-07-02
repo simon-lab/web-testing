@@ -14,19 +14,9 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import com.saimen.fdm.CMSEditMerchantPage;
-import com.saimen.fdm.CMSLoginPage;
-import com.saimen.fdm.CMShomePage;
-import com.saimen.fdm.CMSmerchantPage;
-import com.saimen.fdm.analystPage;
-import com.saimen.fdm.dataMerchantPage;
-import com.saimen.fdm.fdmDetailPage;
-import com.saimen.fdm.fdmPage;
-import com.saimen.fdm.informasiLayananPage;
-import com.saimen.fdm.informasiSettlementPage;
-import com.saimen.fdm.informasiUsahaPage;
-import com.saimen.fdm.loginPage;
-import com.saimen.fdm.oprHomePage;
+import com.saimen.pages.CMS.*;
+import com.saimen.pages.dspPortal.*;
+import com.saimen.pages.nuPay.*;
 
 import tests.dspPortal.model.FDMTestData;
 import tests.reusableMethod.generatingDateToday;

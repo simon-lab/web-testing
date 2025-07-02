@@ -2,7 +2,7 @@ package tests.dspPortal;
 
 import org.testng.asserts.SoftAssert;
 
-import com.saimen.fdm.fdmDetailPage;
+import com.saimen.pages.dspPortal.fdmDetailPage;
 
 import tests.dspPortal.model.FDMTestData;
 

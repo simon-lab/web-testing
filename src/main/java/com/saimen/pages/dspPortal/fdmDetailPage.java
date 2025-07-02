@@ -1,4 +1,4 @@
-package com.saimen.fdm;
+package com.saimen.dspPortal;
 
 import java.util.Arrays;
 import java.util.List;
