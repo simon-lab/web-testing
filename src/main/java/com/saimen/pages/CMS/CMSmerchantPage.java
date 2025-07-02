@@ -1,4 +1,4 @@
-package com.saimen.fdm;
+package com.saimen.pages.CMS;
 
 import java.util.List;
 

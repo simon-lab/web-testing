@@ -1,4 +1,4 @@
-package com.saimen.fdm;
+package com.saimen.pages.dspPortal;
 
 import java.util.List;
 

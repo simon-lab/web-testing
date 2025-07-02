@@ -1,4 +1,4 @@
-package com.saimen.fdm;
+package com.saimen.pages.nuPay;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

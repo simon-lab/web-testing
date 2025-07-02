@@ -28,6 +28,7 @@ public class dspPortalTest implements ITestListener {
     WebDriver driver;
     WebDriver driver2;
     WebDriver driverCMS;
+    WebDriver driverNUPAY;
     int testStatus = 0;
     private FDMTestData testData;
     String dateToday = generatingDateToday.generatingToday();
@@ -35,6 +36,7 @@ public class dspPortalTest implements ITestListener {
     SoftAssert softAssert = new SoftAssert();
     SoftAssert softAssert2 = new SoftAssert();
     SoftAssert softAssertCMS = new SoftAssert();
+    SoftAssert softAssertNUPAY = new SoftAssert();
     loginPage loginPage;
     oprHomePage oprHomePage;
     fdmPage fdmPage;
@@ -59,6 +61,14 @@ public class dspPortalTest implements ITestListener {
     CMSEditMerchantPage cmsEditMerchantPage;
     CMShomePage cmsHomePage;
     CMSmerchantPage cmsMerchantPage;
+
+    NUPAYLoginPage nupayLogin;
+    NUPAYhomePage nupayHomePage;
+    NUPAYeCommPage nupayEcomm;
+    NUPAYDetailPopUp nupayDetailPopUp;
+    NUPAYEditECommPage nupayEditEcomm;
+    NUPAYmerchantWebPage nupayWebPage;
+    NUPAYEditMerchantPage nupayEditWebPage;
 
     String uniqString = generatingString.generateUniqueCode();
     String namaMerchant;
@@ -87,6 +97,9 @@ public class dspPortalTest implements ITestListener {
         driverCMS = new ChromeDriver(option);
         driverCMS.manage().window().minimize();
 
+        driverNUPAY = new ChromeDriver(option);
+        driverNUPAY.manage().window().minimize();
+
         driver.get("https://uat.dspportal.local/");
         loginPage = new loginPage(driver);
         oprHomePage = new oprHomePage(driver);
@@ -114,6 +127,15 @@ public class dspPortalTest implements ITestListener {
         cmsEditMerchantPage = new CMSEditMerchantPage(driverCMS);
         cmsHomePage = new CMShomePage(driverCMS);
         cmsMerchantPage = new CMSmerchantPage(driverCMS);
+
+        driverNUPAY.get("https://jpdigi-ppayweb-uat.dspratama.co.id/");
+        nupayLogin = new NUPAYLoginPage(driverNUPAY);
+        nupayHomePage = new NUPAYhomePage(driverNUPAY);
+        nupayEcomm = new NUPAYeCommPage(driverNUPAY);
+        nupayDetailPopUp = new NUPAYDetailPopUp(driverNUPAY);
+        nupayEditEcomm = new NUPAYEditECommPage(driverNUPAY);
+        nupayWebPage = new NUPAYmerchantWebPage(driverNUPAY);
+        nupayEditWebPage = new NUPAYEditMerchantPage(driverNUPAY);
 
         loginPage.isAt();
         loginPage.fillUsername("art");
@@ -500,7 +522,7 @@ public class dspPortalTest implements ITestListener {
         testStatus = 1;
     }
 
-    @Test(priority = 14)
+    @Test(priority = 15)
     void checkingCMS() {
 
         driverCMS.manage().window().maximize();
@@ -533,6 +555,69 @@ public class dspPortalTest implements ITestListener {
         cmsEditMerchantPage.assertNoOwner(testData.noTelpPemilik(), softAssertCMS);
         // cmsEditMerchantPage.assertPlatform(testData., softAssert);
         cmsEditMerchantPage.assertOutletType(testData.jenisKiosk(), softAssertCMS);
+    }
+
+    @Test(priority = 16)
+    void checkingNuPay() {
+
+        driverNUPAY.manage().window().maximize();
+        nupayLogin.isAt();
+        nupayLogin.fillEmail("admindefault@mggsoftware.com");
+        nupayLogin.fillPassword("123456");
+        nupayLogin.logInClick();
+
+        nupayHomePage.isAt();
+        nupayHomePage.eCommClick();
+
+        nupayEcomm.isAt();
+        int kolomTerkait = nupayEcomm.cariKolom(namaMerchant);
+        nupayEcomm.assertData(merchantID, namaMerchant, dateTodayText, kolomTerkait);
+        nupayEcomm.clickEdit(kolomTerkait);
+
+        nupayEditEcomm.isAt();
+        nupayEditEcomm.assertNamaMerchant(namaMerchant, softAssertNUPAY);
+        // nupayEditEcomm.assertNamaShopping(testData., softAssertNUPAY);
+        nupayEditEcomm.assertAlamat(testData.alamatUsaha(), softAssertNUPAY);
+        nupayEditEcomm.assertKota(testData.kotaUsaha(), softAssertNUPAY);
+        nupayEditEcomm.assertCountry("ID", softAssertNUPAY);
+        nupayEditEcomm.assertKodePos(testData.kodePos(), softAssertNUPAY);
+        nupayEditEcomm.assertNoTelp(testData.noTelpLayanan(), softAssertNUPAY);
+        nupayEditEcomm.assertKategoriMerchant("4457", softAssertNUPAY);
+        nupayEditEcomm.assertTipeUsaha(testData.tipeUsaha(), softAssertNUPAY);
+        nupayEditEcomm.assertNamaPICUsaha(testData.namaPICUsaha(), softAssertNUPAY);
+        nupayEditEcomm.assertNamaPICEmail(testData.emailLayanan(), softAssertNUPAY);
+        nupayEditEcomm.assertNoTelpPIC(testData.noTelpPemilik(), softAssertNUPAY);
+        nupayEditEcomm.assertBank("BANK ARTHA GRAHA", softAssertNUPAY);
+        nupayEditEcomm.assertNoBank(testData.noRekening(), softAssertNUPAY);
+        // nupayEditEcomm.assertMPan(testData., softAssertNUPAY);
+        nupayEditEcomm.assertNamaBank(testData.namaPemilikRekening(), softAssertNUPAY);
+        nupayEditEcomm.assertKcKcp(testData.kcKcp(), softAssertNUPAY);
+        // nupayEditEcomm.assertNMID(testData., softAssertNUPAY);
+        nupayEditEcomm.assertSupportedCard(testData.supportCard(), softAssertNUPAY);
+        nupayEditEcomm.assertAggregator("Merchant DSP", softAssertNUPAY);// Ini harus ditanyakan
+
+        nupayHomePage.merchantsWebsiteClick();
+        nupayWebPage.isAt();
+        kolomTerkait = nupayWebPage.cariKolom(namaMerchant);
+        nupayWebPage.assertData(merchantID, namaMerchant, testData.jenisKiosk(), dateTodayText, kolomTerkait);
+        nupayWebPage.clickEdit(kolomTerkait);
+
+        nupayEditWebPage.isAt();
+        nupayEditWebPage.assertNamaMerchant(namaMerchant, softAssertNUPAY);
+        nupayEditWebPage.assertAlamat(testData.alamatUsaha(), softAssertNUPAY);
+        nupayEditWebPage.assertNoTelp(testData.noTelpLayanan(), softAssertNUPAY);
+        nupayEditWebPage.assertPIC(testData.namaPICUsaha(), softAssertNUPAY);
+        nupayEditWebPage.assertEmail(testData.emailLayanan(), softAssertNUPAY);
+        nupayEditWebPage.assertNoTelpOwner(testData.noTelpPemilik(), softAssertNUPAY);
+        nupayEditWebPage.assertNnpwp(testData.noNPWP(), softAssertNUPAY);
+        nupayEditWebPage.assertNikOwner(testData.noIdentitasKTP(), softAssertNUPAY);
+        nupayEditWebPage.assertAlamatOwner(testData.alamatKTP(), softAssertNUPAY);
+        nupayEditWebPage.assertBankNo(testData.noBank(), softAssertNUPAY);
+        nupayEditWebPage.assertBankAccNo(testData.noRekening(), softAssertNUPAY);
+        nupayEditWebPage.assertKcKcp(testData.kcKcp(), softAssertNUPAY);
+        nupayEditWebPage.assertNamaPemilikBank(testData.namaPemilikRekening(), softAssertNUPAY);
+        // nupayEditWebPage.assertMpan(expected, softAssertNUPAY);
+        nupayEditWebPage.assertSupportedCard(testData.supportCard(), softAssertNUPAY);
     }
 
     @AfterClass

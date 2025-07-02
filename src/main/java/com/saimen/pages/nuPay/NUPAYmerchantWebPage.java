@@ -11,20 +11,20 @@ import org.testng.Assert;
 
 import com.saimen.AbstractPage;
 
-public class NUPAYeCommPage extends AbstractPage {
-    @FindBy(xpath = "//h3[text()='List Data E-commerce']")
+public class NUPAYmerchantWebPage extends AbstractPage {
+    @FindBy(xpath = "//h3[text()='List Data Merchants']")
     private WebElement validator;
 
     @FindBy(xpath = "//table[@class='q-table']/tbody/tr[1]")
     private WebElement namaMerchant;
     @FindBy(xpath = "//table[@class='q-table']/tbody/tr[1]/td[2]")
     private List<WebElement> merchantList;
-    @FindBy(xpath = "(//i[@class='fas fa-edit q-icon notranslate'])[1]")
+    @FindBy(xpath = "(//i[@class='fa fa-edit q-icon notranslate'])[1]")
     private List<WebElement> editList;
     @FindBy(xpath = "//table/tbody/tr")
     private List<WebElement> rowList;
 
-    public NUPAYeCommPage(WebDriver driver) {
+    public NUPAYmerchantWebPage(WebDriver driver) {
         super(driver);
 
     }
@@ -56,7 +56,8 @@ public class NUPAYeCommPage extends AbstractPage {
         return -1;
     }
 
-    public void assertData(String expectedMID, String expectedNamaMerchant, String expectedDate,
+    public void assertData(String expectedMID, String expectedNamaMerchant, String expectedJenisKiosk,
+            String expectedDate,
             int kolomBerapa) {
         this.wait.until(ExpectedConditions.visibilityOf(this.namaMerchant));
 
@@ -69,18 +70,25 @@ public class NUPAYeCommPage extends AbstractPage {
                 expectedNamaMerchant);
         Assert.assertEquals(
                 driver.findElement(By.xpath("//table[@class='q-table']/tbody/tr[" + kolomBerapa + "]/td[3]")).getText(),
-                "Merchant DSP");
-        Assert.assertEquals(
-                driver.findElement(By.xpath("//table[@class='q-table']/tbody/tr[" + kolomBerapa + "]/td[4]")).getText(),
-                "Yes");
+                "Active");
+
+        if (expectedJenisKiosk.equalsIgnoreCase("single")) {
+            Assert.assertEquals(
+                    driver.findElement(By.xpath("//table[@class='q-table']/tbody/tr[" + kolomBerapa + "]/td[4]"))
+                            .getText(),
+                    "Yes");
+        } else if (expectedJenisKiosk.equalsIgnoreCase("multi")) {
+            Assert.assertEquals(
+                    driver.findElement(By.xpath("//table[@class='q-table']/tbody/tr[" + kolomBerapa + "]/td[4]"))
+                            .getText(),
+                    "No");
+        }
+
         Assert.assertEquals(
                 driver.findElement(By.xpath("//table[@class='q-table']/tbody/tr[" + kolomBerapa + "]/td[5]")).getText(),
-                "Valid Active");
-        Assert.assertEquals(
-                driver.findElement(By.xpath("//table[@class='q-table']/tbody/tr[" + kolomBerapa + "]/td[6]")).getText(),
                 expectedDate);
         Assert.assertEquals(
-                driver.findElement(By.xpath("//table[@class='q-table']/tbody/tr[" + kolomBerapa + "]/td[7]")).getText(),
+                driver.findElement(By.xpath("//table[@class='q-table']/tbody/tr[" + kolomBerapa + "]/td[6]")).getText(),
                 expectedDate);
 
     }

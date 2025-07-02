@@ -1,4 +1,4 @@
-package com.saimen.fdm;
+package com.saimen.pages.CMS;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

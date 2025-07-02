@@ -1,4 +1,6 @@
-package com.saimen.fdm;
+package com.saimen.pages.nuPay;
+
+import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -153,19 +155,38 @@ public class NUPAYEditECommPage extends AbstractPage {
         softAssert.assertEquals(websiteField.getAttribute("value"), expected);
     }
 
-    public void assertCreditCardChecked(SoftAssert softAssert) {
-        boolean isChecked = creditCardCheckBox.getAttribute("aria-checked").contains("true");
-        softAssert.assertTrue(isChecked);
+    public void assertSupportedCard(List<String> expectedSupportCard, SoftAssert softAssert) {
+        boolean creditIsChecked = creditCardCheckBox.getAttribute("aria-checked").contains("true");
+        boolean debitIsChecked = debitCardCheckBox.getAttribute("aria-checked").contains("true");
+        boolean eMoneyIsChecked = eMoneyCheckBox.getAttribute("aria-checked").contains("true");
+
+        if (expectedSupportCard.contains("Credit Card")) {
+            softAssert.assertTrue(creditIsChecked, "Credit Card checkbox should be checked.");
+        } else {
+            softAssert.assertFalse(creditIsChecked, "Credit Card checkbox should not be checked.");
+        }
+
+        if (expectedSupportCard.contains("Debit Card")) {
+            softAssert.assertTrue(debitIsChecked, "Debit Card checkbox should be checked.");
+        } else {
+            softAssert.assertFalse(debitIsChecked, "Debit Card checkbox should not be checked.");
+        }
+
+        if (expectedSupportCard.contains("e-Money")) {
+            softAssert.assertTrue(eMoneyIsChecked, "e-Money checkbox should be checked.");
+        } else {
+            softAssert.assertFalse(eMoneyIsChecked, "e-Money checkbox should not be checked.");
+        }
     }
 
     public void assertDebitCardChecked(SoftAssert softAssert) {
-        boolean isChecked = debitCardCheckBox.getAttribute("aria-checked").contains("true");
-        softAssert.assertTrue(isChecked);
+        boolean debitIsChecked = debitCardCheckBox.getAttribute("aria-checked").contains("true");
+
     }
 
     public void assertEMoneyChecked(SoftAssert softAssert) {
-        boolean isChecked = eMoneyCheckBox.getAttribute("aria-checked").contains("true");
-        softAssert.assertTrue(isChecked);
+        boolean eMoneyIsChecked = eMoneyCheckBox.getAttribute("aria-checked").contains("true");
+
     }
 
     public void assertAggregator(String expected, SoftAssert softAssert) {

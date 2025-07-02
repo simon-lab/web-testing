@@ -1,4 +1,4 @@
-package com.saimen.dspPortal;
+package com.saimen.pages.dspPortal;
 
 import java.util.List;
 import java.util.stream.Collectors;
