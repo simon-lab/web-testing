@@ -41,6 +41,7 @@ public class dspPortalTest implements ITestListener {
     int testStatus = 0;
     private FDMTestData testData;
     String dateToday = generatingDateToday.generatingToday();
+    String dateTodayText = generatingDateToday.generatingTodayTextFormat();
     SoftAssert softAssert = new SoftAssert();
     SoftAssert softAssert2 = new SoftAssert();
     SoftAssert softAssertCMS = new SoftAssert();
@@ -74,6 +75,7 @@ public class dspPortalTest implements ITestListener {
     String namaPerusahaan;
     String namaPemilikMerchant;
     int kolomTerkait;
+    String merchantID;
 
     @BeforeClass
     @Parameters({ "testDataPath" })
@@ -522,7 +524,8 @@ public class dspPortalTest implements ITestListener {
 
         cmsMerchantPage.isAt();
         int kolomTerkait = cmsMerchantPage.cariKolom(namaMerchant);
-        cmsMerchantPage.assertDataAndGetMID(namaMerchant, testData.jenisKiosk(), kolomTerkait);
+        merchantID = cmsMerchantPage.assertDataAndGetMID(namaMerchant, testData.jenisKiosk(), kolomTerkait);
+        System.out.println("Merchant ID Nya: " + merchantID);
         cmsMerchantPage.clickEdit(kolomTerkait);
 
         cmsEditMerchantPage.isAt();
